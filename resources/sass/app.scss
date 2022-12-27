@@ -1,0 +1,15 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+//@import 'bootstrap/scss/bootstrap';   uncomment if switching from tailwind to bootstrap (also change bootstrap.js)
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import 'test';
