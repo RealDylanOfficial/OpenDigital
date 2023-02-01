@@ -23,3 +23,6 @@ Route::get('/test', function () {
     return view('test', ['testHead' => 'head1']);
 });
 
+Route::get('/home', function () {
+    return view('home');
+});

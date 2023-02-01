@@ -8,13 +8,15 @@
 
     @viteReactRefresh
     @vite(["resources/js/app.js", "resources/sass/app.scss"])
+
 	
-    
 </head>
 <body>
+	@include('inc.navbar')
+	
     {{$testHead}}
 	<div id="root"></div>
-	<img src="{{ Vite::asset('resources/images/Blue_tit_three-quarter_close-up.jpg') }}" alt="" style="height: 200px; width:auto">
+	<img src="{{ asset('images/Blue_tit_three-quarter_close-up.jpg') }}" alt="" style="height: 200px; width:auto">
 	<h1 class="text-3xl font-bold underline">test</h1>
 
 </body>
