@@ -18,6 +18,12 @@
                 <li class="mr-6">
                   <a class="" href="#">Link</a>
                 </li>
+                <li class="mr-6">
+                    <a class="" href="login">Login</a>
+                </li>
+                <li class="mr-6">
+                    <a class="" href="register">Register</a>
+                </li>
               </ul>
         </div>
         <div>
