@@ -8,20 +8,28 @@
 
         <div class="ml-8">
             {{-- menu with links to pages --}}
-            <ul class="flex text-blue-500 hover:text-blue-800 text-2xl">
+            <ul class="flex text-blue-500">
                 <li class="mr-6">
-                  <a class="" href="#">Active</a>
+                  <a class="hover:text-blue-800 text-2xl" href="#">Text</a>
                 </li>
                 <li class="mr-6">
-                  <a class="" href="#">Link</a>
+                  <a class="hover:text-blue-800 text-2xl" href="#">Audio</a>
                 </li>
                 <li class="mr-6">
-                  <a class="" href="#">Link</a>
+                  <a class="hover:text-blue-800 text-2xl" href="#">Research</a>
+                </li>
+                <li class="mr-6">
+                  <a class="hover:text-blue-800 text-2xl" href="#">Images</a>
                 </li>
               </ul>
         </div>
-        <div>
+        <div class="ml-8">
             {{-- upload post button --}}
+            <ul class="flex text-blue-500 hover:text-blue-800 text-2xl">
+                <li class="mr-6">
+                    <a class="" href="#">Post</a>
+                </li>
+            </ul>
         </div>
         <div class="relative mx-auto text-gray-600 lg:block hidden">
             {{-- search bar --}}
