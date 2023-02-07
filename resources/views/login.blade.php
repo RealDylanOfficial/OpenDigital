@@ -7,7 +7,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="login.scss">
     @viteReactRefresh
-    @vite(["resources/js/app.js", "resources/sass/app.scss", "resources/sass/login.scss"])
+    @vite(["resources/js/app.js", "resources/js/login.js", "resources/sass/app.scss", "resources/sass/login.scss"])
 
 	
 </head>
