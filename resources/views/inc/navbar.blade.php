@@ -8,25 +8,33 @@
 
         <div class="ml-8">
             {{-- menu with links to pages --}}
-            <ul class="flex text-blue-500 hover:text-blue-800 text-2xl">
+            <ul class="flex text-blue-500">
                 <li class="mr-6">
-                  <a class="" href="#">Active</a>
+                  <a class="hover:text-blue-800 text-2xl" href="#">Text</a>
                 </li>
                 <li class="mr-6">
-                  <a class="" href="#">Link</a>
+                  <a class="hover:text-blue-800 text-2xl" href="#">Audio</a>
                 </li>
                 <li class="mr-6">
-                  <a class="" href="#">Link</a>
+                  <a class="hover:text-blue-800 text-2xl" href="#">Research</a>
+                </li>
+                <li class="mr-6">
+                  <a class="hover:text-blue-800 text-2xl" href="#">Images</a>
                 </li>
               </ul>
         </div>
-        <div>
+        <div class="ml-20">
             {{-- upload post button --}}
+            <ul class="flex border-2 border-blue-500 bg-blue-500 rounded-lg text-white hover:border-blue-800 hover:bg-blue-800 text-2xl">
+                <li class="mr-3">
+                    <a class="ml-3" href="#">Post</a>
+                </li>
+            </ul>
         </div>
-        <div class="relative mx-auto text-gray-600 lg:block hidden">
+        <div class="relative ml-6 mr-6 text-gray-600 lg:block hidden">
             {{-- search bar --}}
             <input
-                class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+                class="border-2 border-gray-300 bg-white h-10 pl-3 pr-10 rounded-lg text-sm focus:outline-none"
                 type="search" name="search" placeholder="Search">
             <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
                 <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -41,9 +49,22 @@
         </div>
         <div>
             {{-- login and register buttons --}}
+            <ul class="flex text-blue-500">
+                <li class="mr-6">
+                    <a class="hover:text-blue-800 text-2xl" href="#">Login</a>
+                </li>
+                <li class="mr-6">
+                    <a class="hover:text-blue-800 text-2xl" href="#">Register</a>
+                </li>
+            </ul>
         </div>
         <div>
             {{-- view account button with profile icon --}}
+            <ul class="flex text-blue-500">
+                <li class="mr-6">
+                  <a class="hover:text-blue-800 text-2xl" href="#">Account</a>
+                </li>
+            </ul>
         </div>
     </div>
 
