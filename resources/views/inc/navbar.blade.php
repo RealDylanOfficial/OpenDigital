@@ -21,12 +21,6 @@
                 <li class="mr-6">
                   <a class="hover:text-blue-800 text-2xl" href="#">Images</a>
                 </li>
-                <li class="mr-6">
-                    <a class="" href="login">Login</a>
-                </li>
-                <li class="mr-6">
-                    <a class="" href="register">Register</a>
-                </li>
               </ul>
         </div>
         <div class="ml-20">
@@ -57,10 +51,10 @@
             {{-- login and register buttons --}}
             <ul class="flex text-blue-500">
                 <li class="mr-6">
-                    <a class="hover:text-blue-800 text-2xl" href="#">Login</a>
+                    <a class="hover:text-blue-800 text-2xl" href="login">Login</a>
                 </li>
                 <li class="mr-6">
-                    <a class="hover:text-blue-800 text-2xl" href="#">Register</a>
+                    <a class="hover:text-blue-800 text-2xl" href="register">Register</a>
                 </li>
             </ul>
         </div>
