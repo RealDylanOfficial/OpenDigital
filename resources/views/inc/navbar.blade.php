@@ -21,6 +21,12 @@
                 <li class="mr-6">
                   <a class="hover:text-blue-800 text-2xl" href="#">Images</a>
                 </li>
+                <li class="mr-6">
+                    <a class="" href="login">Login</a>
+                </li>
+                <li class="mr-6">
+                    <a class="" href="register">Register</a>
+                </li>
               </ul>
         </div>
         <div class="ml-20">
