@@ -38,6 +38,17 @@ class DatabaseSeeder extends Seeder
             "download_count" => 12,
             "likes" => 17,
             "content_type" => ".jpg",
+            "description" => "Picture of a bird. (Test data: this is not public domain!)",
+            "created_at" => Carbon::now(),
+        ]);
+
+        DB::table('posts')->insert([
+            'user_id' => 1,
+            "title" => "Blood, toil, tears and sweat",
+            "download_count" => 78,
+            "likes" => 32,
+            "content_type" => ".mp3",
+            "description" => "Speech by Winston Churchill. Made to the House of Commons on the 13th of May 1940.",
             "created_at" => Carbon::now(),
         ]);
 

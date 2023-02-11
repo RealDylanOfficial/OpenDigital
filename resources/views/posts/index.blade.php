@@ -18,18 +18,23 @@
                 </div>
             </div> --}}
             
-                <div class="card card-body bg-light" style="margin-left:20%; width:60%">
+                <div class="card card-body bg-light mb-5" style="margin-left:20%; width:60%">
                 
-                    <h1 class="text-2xl">{{$post->title}}</h1>
+                    <h1 class="text-2xl"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
+                    <small>Posted by: {{$post->user->username}}</small>
                     <small>Posted: {{$post->created_at}}</small>
                    
                     @if (in_array($post->content_type, [".jpg",".jpeg",".png"]))
-                        <img src="/images/content/{{$post->id . $post->content_type}}" alt="{{$post->title}}">
+                        <img src="/content/{{$post->id . $post->content_type}}" alt="{{$post->title}}">
+                    @elseif (in_array($post->content_type, [".mp3",".wav"]))
+                        <audio controls>
+                            <source src="/content/{{$post->id . $post->content_type}}" type="audio/mpeg">
+                        </audio>
                     @else
                         
                     @endif
                 </div>
-
+                
             
             
         @endforeach
