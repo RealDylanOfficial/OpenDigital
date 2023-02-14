@@ -4,11 +4,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>OpenDigital - Posts</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
+    "></script>
     @viteReactRefresh
     @vite(["resources/sass/app.scss"])
+
 </head>
 <body>
     @include('inc.navbar')
+    <div class="ml-5">
+
+        <div class="" style="font-size:2rem;">
+            <i class="bi-filter"></i>
+        </div>
+
+
+    </div>
+
+      
     <div class="container">
     @if(count($posts) > 0)
         @foreach ($posts as $post)

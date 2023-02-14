@@ -6,6 +6,7 @@
 
 // Bootstrap
 @import '/vendor/twbs/bootstrap/scss/bootstrap';   //uncomment if switching from tailwind to bootstrap (also change bootstrap.js)
+@import'/node_modules/bootstrap-icons/font/bootstrap-icons.css';
 
 @tailwind base;
 @tailwind components;
