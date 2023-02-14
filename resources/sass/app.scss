@@ -5,7 +5,7 @@
 @import 'variables';
 
 // Bootstrap
-//@import 'bootstrap/scss/bootstrap';   uncomment if switching from tailwind to bootstrap (also change bootstrap.js)
+@import '/vendor/twbs/bootstrap/scss/bootstrap';   //uncomment if switching from tailwind to bootstrap (also change bootstrap.js)
 
 @tailwind base;
 @tailwind components;
