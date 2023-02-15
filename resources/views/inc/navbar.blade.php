@@ -1,5 +1,5 @@
 <nav>
-    <div class="flex flex-row items-center border-b h-20 mb-8">
+    <div class="flex flex-row items-center border-b h-20 bg-gray-100">
         <div class="ml-4 mt-1">
             {{-- logo with link to homepage --}}
             
