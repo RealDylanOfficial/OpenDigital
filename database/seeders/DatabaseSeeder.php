@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             "title" => "bird wow",
             "download_count" => 12,
-            "likes" => 17,
+            "likes" => 1456,
             "content_type" => ".jpg",
             "description" => "Picture of a bird. (Test data: this is not public domain!)",
             "created_at" => Carbon::now(),

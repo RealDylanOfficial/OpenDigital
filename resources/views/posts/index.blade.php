@@ -137,6 +137,17 @@
 
     <div class="container mt-8">
         @if(count($posts) > 0)
+            
+            @if ($sort == "most downloaded")
+                @php $sortField = "download_count"; @endphp
+            @elseif ($sort == "most liked")
+                @php $sortField = "likes"; @endphp
+            @else
+                @php $sortField = "created_at"; @endphp
+            @endif
+
+            @php $posts = $posts->sortByDesc($sortField); @endphp
+            
         @foreach ($posts as $post)
         {{-- <div class="flex items-center">
                 <div class="border-2 rounded-lg flex m-auto">
@@ -168,6 +179,8 @@
     </div>
     <p>No posts found</p>
     @endif
+    
+    
 </body>
 
 </html>
