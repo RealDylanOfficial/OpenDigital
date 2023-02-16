@@ -13,7 +13,50 @@
 
 <body>
     @include('inc.navbar')
+    
 
+    {{-- Gets the filters and stores them in variables --}}
+    <?php
+    $tags = [];
+    $date = "";
+    $type = "";
+    $sort = "";
+    if (array_key_exists("tags", $_GET)) {
+        $tags = $_GET["tags"];
+    }
+    if (array_key_exists("date", $_GET)) {
+        $date = $_GET["date"];
+    }
+    if (array_key_exists("type", $_GET)) {
+        $type = $_GET["type"];
+    }
+    if (array_key_exists("sort", $_GET)) {
+        $sort = $_GET["sort"];
+    }
+    
+    
+    
+    echo(implode($tags).$date.$type.$sort);
+
+    ?>
+    
+    {{-- @foreach ($_GET as $arg)
+        @if (is_array($arg))
+            @if (array_keys($arg)[0] == "tags")
+                $tags = $arg;
+            @endif
+            @foreach ($arg as $val)
+                {{$val}}
+            @endforeach
+        @else
+        {{$arg}}
+            @if ()
+                
+            @endif
+            {{$arg}}
+        @endif
+        
+    @endforeach --}}
     <!-- Sidebar -->
     
     <div class="sidebar">
@@ -76,6 +119,19 @@
         <button id="filter" type="submit" onclick="">Apply filters</button>
     </div>
 
+    </div>
+
+    <div class="absolute right-8">
+        <form action="" method="get" id="sortForm">
+        <div class="form-group">
+          <label>Sort by:</label>
+          <select class="form-control" name="sort" id="sortSelect">
+            <option>most recently</option>
+            <option>most liked</option>
+            <option>most downloaded</option>
+          </select>
+        </div>
+        </form>
     </div>
 
 
