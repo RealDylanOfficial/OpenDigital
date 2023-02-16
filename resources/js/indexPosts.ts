@@ -41,7 +41,7 @@ const submitButton: HTMLButtonElement = document.getElementById("filter");
 submitButton.addEventListener("click", (e:Event) => submitForms())
 
 
-let vars = [], arg;
+let vars: string[] = [], arg;
 let args = decodeURI(window.location.href).slice(window.location.href.indexOf('?') + 1).split('&');
 for(var i = 0; i < args.length; i++)
 {
@@ -51,57 +51,13 @@ for(var i = 0; i < args.length; i++)
 }
 
 
-const sortMenu: HTMLButtonElement = document.getElementById("sortSelect");
+const sortMenu: HTMLSelectElement = document.getElementById("sortSelect");
 
 sortMenu["value"] = vars["sort"]
-if (vars["sort"] == "most recent") {
-  
-}
-else if(vars["sort"] == "most liked"){
-
-}
-else if(vars["sort"] == "most downloaded"){
-
-}
 
 sortMenu.addEventListener("change", (e:Event) => submitForms())
 
 function submitForms(){
-  // const form1: HTMLFormElement = document.getElementById("tagForm");
-  // const form2: HTMLFormElement = document.getElementById("dateForm");
-  // const form3: HTMLFormElement = document.getElementById("mediaForm");
-
-
-  // let getArgs: string = "";
-  // if(tags.length > 0){
-  // getArgs = "tags=";
-  // for (let index = 0; index < tags.length; index++) {
-  //   getArgs += tags[index];
-  //   if (index != tags.length - 1) {
-  //     getArgs += ",";
-  //   }
-  // }}
-
-  // let elements = Object.fromEntries(new FormData(document.getElementById("dateForm")));
-  // if(elements.period != null){
-  //   if(getArgs != ""){
-  //     getArgs += "&";
-  //   }
-  //   getArgs += "date=";
-  //   getArgs += elements.period;
-  // }
-
-  // let elements2 = Object.fromEntries(new FormData(document.getElementById("mediaForm")));
-  // if(elements2.period != null){
-  //   if(getArgs != ""){
-  //     getArgs += "&";
-  //   }
-  //   getArgs += "type=";
-  //   getArgs += elements2.period;
-  // }
-
-  // let currentURL = window.location.href.split("?")[0];
-  // window.location.href = currentURL + "?" + getArgs;
 
   let getArgs = {};
 
