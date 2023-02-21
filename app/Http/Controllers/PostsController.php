@@ -13,7 +13,26 @@ class PostsController extends Controller
      */
     public function index()
     {
+        // $tags = request("tags");
+        // $type = request("type");
+        // $date = request("date");
+
+        // $query = Post::query();
+
+        // if ($tags) {
+        //     $query->where("tags", $tags);
+        // }
+
+        // if ($type) {
+        //     $query->orWhere("type", $type);
+        // }
+
+        // if ($date) {
+        //     $query->orWhereDate("created_at", $date);
+        // }
+
         $posts = Post::all();
+        
         return view('posts.index')->with('posts', $posts);
     }
 

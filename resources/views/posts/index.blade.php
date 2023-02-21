@@ -36,7 +36,13 @@
     
     
     
-    echo(implode($tags).$date.$type.$sort);
+    // echo(implode($tags).$date.$type.$sort);
+
+    function setValue($field, $option){
+        if ($field == $option){
+            echo("checked selected");
+        }
+    }
 
     ?>
     
@@ -77,19 +83,19 @@
         <form id="dateForm" action="" method="get">
             <label>Posted within last:</label>
             <label>
-                <input type="radio" name="period" value="day">
+                <input type="radio" name="period" value="day" <?php setValue($date, "day") ?>>
                 Day
             </label>
             <label>
-                <input type="radio" name="period" value="week">
+                <input type="radio" name="period" value="week" <?php setValue($date, "week") ?>>
                 Week
             </label>
             <label>
-                <input type="radio" name="period" value="month">
+                <input type="radio" name="period" value="month" <?php setValue($date, "month") ?>>
                 Month
             </label>
             <label>
-                <input type="radio" name="period" value="year">
+                <input type="radio" name="period" value="year" <?php setValue($date, "year") ?>>
                 Year
             </label>
             
@@ -98,19 +104,19 @@
         <form id="mediaForm" action="" method="get">
             <label>Media type:</label>
             <label>
-                <input type="radio" name="period" value="image">
+                <input type="radio" name="period" value="image" <?php setValue($type, "image") ?>>
                 Image
             </label>
             <label>
-                <input type="radio" name="period" value="audio">
+                <input type="radio" name="period" value="audio" <?php setValue($type, "audio") ?>>
                 Audio
             </label>
             <label>
-                <input type="radio" name="period" value="video">
+                <input type="radio" name="period" value="video" <?php setValue($type, "video") ?>>
                 Video
             </label>
             <label>
-                <input type="radio" name="period" value="pdf">
+                <input type="radio" name="period" value="pdf" <?php setValue($type, "pdf") ?>>
                 PDF
             </label>
             
@@ -126,9 +132,9 @@
         <div class="form-group">
           <label>Sort by:</label>
           <select class="form-control" name="sort" id="sortSelect">
-            <option>most recently</option>
-            <option>most liked</option>
-            <option>most downloaded</option>
+            <option <?php setValue($sort, "most recently") ?>>most recently</option>
+            <option <?php setValue($sort, "most liked") ?>>most liked</option>
+            <option <?php setValue($sort, "most downloaded") ?>>most downloaded</option>
           </select>
         </div>
         </form>
