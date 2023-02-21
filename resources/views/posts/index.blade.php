@@ -123,6 +123,7 @@
         </form>
 
         <button id="filter" type="submit" onclick="">Apply filters</button>
+        <br><br><a class="ml-2 underline" href="/posts">Reset filters</a>
     </div>
 
     </div>
@@ -167,11 +168,11 @@
         <small>Posted by: {{$post->user->username}}</small>
         <small>Posted: {{$post->created_at}}</small>
 
-        @if (in_array($post->content_type, [".jpg",".jpeg",".png"]))
-        <img src="/content/{{$post->id . $post->content_type}}" alt="{{$post->title}}">
-        @elseif (in_array($post->content_type, [".mp3",".wav"]))
+        @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
+        <img src="/content/{{$post->id . $post->file_ext}}" alt="{{$post->title}}">
+        @elseif (in_array($post->file_ext, [".mp3",".wav"]))
         <audio controls>
-            <source src="/content/{{$post->id . $post->content_type}}" type="audio/mpeg">
+            <source src="/content/{{$post->id . $post->file_ext}}" type="audio/mpeg">
         </audio>
         @else
 

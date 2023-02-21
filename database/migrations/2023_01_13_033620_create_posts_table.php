@@ -21,7 +21,8 @@ return new class extends Migration
             $table->unsignedInteger("download_count");
             $table->unsignedInteger("likes");
             //$table->string("filepath");
-            $table->string("content_type", 32);     //file extension or similar, denoting the type of content the browser needs to render
+            $table->string("file_ext", 32);     //file extension or similar, denoting the type of content the browser needs to render
+            $table->string("content_type", 32);
             $table->text("description");
             $table->timestamps();
         });

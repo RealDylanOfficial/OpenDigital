@@ -37,7 +37,8 @@ class DatabaseSeeder extends Seeder
             "title" => "bird wow",
             "download_count" => 12,
             "likes" => 1456,
-            "content_type" => ".jpg",
+            "file_ext" => ".jpg",
+            "content_type" => "image",
             "description" => "Picture of a bird. (Test data: this is not public domain!)",
             "created_at" => Carbon::now(),
         ]);
@@ -47,7 +48,8 @@ class DatabaseSeeder extends Seeder
             "title" => "Blood, toil, tears and sweat",
             "download_count" => 78,
             "likes" => 32,
-            "content_type" => ".mp3",
+            "file_ext" => ".mp3",
+            "content_type" => "audio",
             "description" => "Speech by Winston Churchill. Made to the House of Commons on the 13th of May 1940.",
             "created_at" => Carbon::now(),
         ]);
@@ -55,10 +57,38 @@ class DatabaseSeeder extends Seeder
         DB::table('tags')->insert([
             "tag" => "image"
         ]);
+        DB::table('tags')->insert([
+            "tag" => "bird"
+        ]);
+        DB::table('tags')->insert([
+            "tag" => "speech"
+        ]);
+        DB::table('tags')->insert([
+            "tag" => "nature"
+        ]);
+        DB::table('tags')->insert([
+            "tag" => "historical"
+        ]);
 
-        DB::table('tags_relation')->insert([
+        DB::table('post_tag')->insert([
             "post_id" => 1,
             "tag_id" => 1,
+        ]);
+        DB::table('post_tag')->insert([
+            "post_id" => 1,
+            "tag_id" => 2,
+        ]);
+        DB::table('post_tag')->insert([
+            "post_id" => 2,
+            "tag_id" => 3,
+        ]);
+        DB::table('post_tag')->insert([
+            "post_id" => 1,
+            "tag_id" => 4,
+        ]);
+        DB::table('post_tag')->insert([
+            "post_id" => 2,
+            "tag_id" => 5,
         ]);
 
     }
