@@ -142,7 +142,15 @@
     </div>
 
 
+
     <div class="container mt-8">
+        @if (request("search"))
+            <div class="mb-8 text-l" style="margin-left:20%; width:60%">
+                <h1>Searching for: "{{request("search")}}"</h1>
+                <div class="hidden" id="searchTerm">{{request("search")}}</div>
+            </div>
+
+        @endif
         @if(count($posts) > 0)
             
             @if ($sort == "most downloaded")

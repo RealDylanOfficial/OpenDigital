@@ -55,7 +55,7 @@ for(var i = 0; i < args.length; i++)
     vars.push(arg[0]);
     vars[arg[0]] = arg[1];
 }
-console.log(queryTags)
+// console.log(args)
 queryTags.forEach(tag => {
   addTag(tag);
   tags.push(tag);
@@ -80,10 +80,10 @@ function submitForms(){
   if (Object.fromEntries(new FormData(document.getElementById("mediaForm"))).period != undefined) {
     getArgs["type"] = Object.fromEntries(new FormData(document.getElementById("mediaForm"))).period;
   }
+  getArgs["search"] = document.getElementById("searchTerm")?.innerText
 
   getArgs["sort"] = document.getElementById("sortSelect")["value"]
   
-
   let currentURL = window.location.href.split("?")[0];
   window.location.href = currentURL + "?" + $.param(getArgs);
   
