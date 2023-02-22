@@ -36,7 +36,13 @@
     
     
     
-    echo(implode($tags).$date.$type.$sort);
+    // echo(implode($tags).$date.$type.$sort);
+
+    function setValue($field, $option){
+        if ($field == $option){
+            echo("checked selected");
+        }
+    }
 
     ?>
     
@@ -77,19 +83,19 @@
         <form id="dateForm" action="" method="get">
             <label>Posted within last:</label>
             <label>
-                <input type="radio" name="period" value="day">
+                <input type="radio" name="period" value="day" <?php setValue($date, "day") ?>>
                 Day
             </label>
             <label>
-                <input type="radio" name="period" value="week">
+                <input type="radio" name="period" value="week" <?php setValue($date, "week") ?>>
                 Week
             </label>
             <label>
-                <input type="radio" name="period" value="month">
+                <input type="radio" name="period" value="month" <?php setValue($date, "month") ?>>
                 Month
             </label>
             <label>
-                <input type="radio" name="period" value="year">
+                <input type="radio" name="period" value="year" <?php setValue($date, "year") ?>>
                 Year
             </label>
             
@@ -98,25 +104,26 @@
         <form id="mediaForm" action="" method="get">
             <label>Media type:</label>
             <label>
-                <input type="radio" name="period" value="image">
+                <input type="radio" name="period" value="image" <?php setValue($type, "image") ?>>
                 Image
             </label>
             <label>
-                <input type="radio" name="period" value="audio">
+                <input type="radio" name="period" value="audio" <?php setValue($type, "audio") ?>>
                 Audio
             </label>
             <label>
-                <input type="radio" name="period" value="video">
+                <input type="radio" name="period" value="video" <?php setValue($type, "video") ?>>
                 Video
             </label>
             <label>
-                <input type="radio" name="period" value="pdf">
+                <input type="radio" name="period" value="pdf" <?php setValue($type, "pdf") ?>>
                 PDF
             </label>
             
         </form>
 
         <button id="filter" type="submit" onclick="">Apply filters</button>
+        <br><br><a class="ml-2 underline" href="/posts">Reset filters</a>
     </div>
 
     </div>
@@ -126,16 +133,24 @@
         <div class="form-group">
           <label>Sort by:</label>
           <select class="form-control" name="sort" id="sortSelect">
-            <option>most recently</option>
-            <option>most liked</option>
-            <option>most downloaded</option>
+            <option <?php setValue($sort, "most recently") ?>>most recently</option>
+            <option <?php setValue($sort, "most liked") ?>>most liked</option>
+            <option <?php setValue($sort, "most downloaded") ?>>most downloaded</option>
           </select>
         </div>
         </form>
     </div>
 
 
+
     <div class="container mt-8">
+        @if (request("search"))
+            <div class="mb-8 text-l" style="margin-left:20%; width:60%">
+                <h1>Searching for: "{{request("search")}}"</h1>
+                <div class="hidden" id="searchTerm">{{request("search")}}</div>
+            </div>
+
+        @endif
         @if(count($posts) > 0)
             
             @if ($sort == "most downloaded")
@@ -161,11 +176,11 @@
         <small>Posted by: {{$post->user->username}}</small>
         <small>Posted: {{$post->created_at}}</small>
 
-        @if (in_array($post->content_type, [".jpg",".jpeg",".png"]))
-        <img src="/content/{{$post->id . $post->content_type}}" alt="{{$post->title}}">
-        @elseif (in_array($post->content_type, [".mp3",".wav"]))
+        @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
+        <img src="/content/{{$post->id . $post->file_ext}}" alt="{{$post->title}}">
+        @elseif (in_array($post->file_ext, [".mp3",".wav"]))
         <audio controls>
-            <source src="/content/{{$post->id . $post->content_type}}" type="audio/mpeg">
+            <source src="/content/{{$post->id . $post->file_ext}}" type="audio/mpeg">
         </audio>
         @else
 
