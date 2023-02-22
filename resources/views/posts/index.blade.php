@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{asset("images/logo.png")}}">
     <title>OpenDigital - Posts</title>
 
     @viteReactRefresh
@@ -171,9 +172,11 @@
     </div> --}}
 
     <div class="card card-body bg-light mb-5" style="margin-left:20%; width:60%">
-
-        <h1 class="text-2xl"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
-        <small>Posted by: {{$post->user->username}}</small>
+        <a href="#" class="flex h-20 border-b flex"> 
+            <img class="rounded-full object-cover h-16 w-16" src="/images/profile_pictures/{{$post->user->profile_picture}}" alt="">
+            <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
+        </a>
+        <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
         <small>Posted: {{$post->created_at}}</small>
 
         @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
