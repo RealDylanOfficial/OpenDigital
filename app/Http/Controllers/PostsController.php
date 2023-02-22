@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Post;
 use Carbon\Carbon;
+use App\Models\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class PostsController extends Controller
 {
     /**
@@ -17,6 +19,7 @@ class PostsController extends Controller
         $tags = request("tags");
         $type = request("type");
         $date = request("date");
+        $search = request("search");
 
         $query = Post::query();
 
@@ -57,8 +60,24 @@ class PostsController extends Controller
         if ($date) {
             $query->WhereDate("created_at", ">=", $range);
         }
-        
+
+        // searching
+
+        if ($search) {
+            $search = explode(" ", $search);
+            for ($i=0; $i < count($search); $i++) { 
+                $term = $search[$i];
+                $query->Where("title", "LIKE", "%$term%");
+                $query->orWhere("description", "LIKE", "%$term%");
+            }
+        }
+
+        // DB::connection()->enableQueryLog();
         $posts = $query->get();
+        
+        // $queries = DB::getQueryLog();
+        // $last_query = end($queries);
+        // return $queries;
         // $posts = Post::all();
         
         return view('posts.index')->with('posts', $posts);
