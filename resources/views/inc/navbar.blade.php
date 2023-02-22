@@ -3,7 +3,7 @@
         <div class="ml-4 mt-1">
             {{-- logo with link to homepage --}}
             
-            <a href="/home"> <img class="h-16 w-auto" src="{{asset("images/logo.png")}}" alt=""></a>
+            <a href="/home"> <img class="h-16 w-16" src="{{asset("images/logo.png")}}" alt=""></a>
         </div>
 
         <div class="ml-8">
