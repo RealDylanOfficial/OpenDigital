@@ -177,7 +177,6 @@
             <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
         </a>
         <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
-        <small>Posted: {{$post->created_at}}</small>
 
         @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
         <img src="/content/{{$post->id . $post->file_ext}}" alt="{{$post->title}}">
@@ -188,6 +187,7 @@
         @else
 
         @endif
+        <small>Posted: {{$post->created_at}}</small>
 
         <a href="/posts/{{$post->id}}" class="h-5 mt-2.5 border-t">
             <h3 class="text-center mt-2">Comments</h3>

@@ -18,7 +18,6 @@
                 <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
             </a>
             <h1 class="text-2xl">{{$post->title}}</h1>
-            <small>Posted at: {{$post->created_at}}</small>
             <p>{{$post->description}}</p>
            
             @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
@@ -30,6 +29,7 @@
             @else
                 
             @endif
+            <small>Posted at: {{$post->created_at}}</small>
         </div>
     </div>
 </body>
