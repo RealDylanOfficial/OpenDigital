@@ -188,6 +188,10 @@
         @else
 
         @endif
+
+        <a href="/posts/{{$post->id}}" class="h-5 mt-2.5 border-t">
+            <h3 class="text-center mt-2">Comments</h3>
+        </a>
     </div>
 
 
