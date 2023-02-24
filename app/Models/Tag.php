@@ -11,4 +11,9 @@ class Tag extends Model
 
     protected $table = "tags";
     public $primaryKey = "id";
+    public $timestamps = false;
+
+    public function posts(){
+        return $this->belongsToMany('App\Models\Post');
+    }
 }
