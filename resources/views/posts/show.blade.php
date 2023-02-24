@@ -27,6 +27,14 @@
                 <audio controls>
                     <source src="/content/{{$post->id . $post->file_ext}}" type="audio/mpeg">
                 </audio>
+            @elseif (in_array($post->file_ext, [".mp4"]))
+                <video controls>
+                    <source src="/content/{{$post->id . $post->file_ext}}" type="video/mp4">
+                </video>
+            @elseif (in_array($post->file_ext, [".pdf"]))
+                <a class="underline" href="/content/{{$post->id . $post->file_ext}}">Open PDF in new tab</a>
+                <iframe class="" style="height:100%;width:100%;" src="/content/{{$post->id . $post->file_ext}}">
+                </iframe>
             @else
                 
             @endif
