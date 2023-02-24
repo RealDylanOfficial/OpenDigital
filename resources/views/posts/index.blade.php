@@ -145,6 +145,10 @@
 
 
     <div class="container mt-8">
+        <div class="" style="margin-left:20%; width:60%;">
+            @include('inc.messages')
+        </div>
+        
         @if (request("search"))
             <div class="mb-8 text-l" style="margin-left:20%; width:60%">
                 <h1>Searching for: "{{request("search")}}"</h1>
@@ -172,7 +176,7 @@
     </div> --}}
 
     <div class="card card-body bg-light mb-5" style="margin-left:20%; width:60%">
-        <a href="#" class="flex h-20 border-b flex"> 
+        <a href="#" class="flex h-20 border-b"> 
             <img class="rounded-full object-cover h-16 w-16" src="/images/profile_pictures/{{$post->user->profile_picture}}" alt="">
             <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
         </a>

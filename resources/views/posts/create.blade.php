@@ -13,6 +13,7 @@
     @include('inc.navbar')
     <div class="ml-60 mr-60 mt-6">
         <h1 class="display-6">Create post:</h1>
+        @include("inc.messages")
         <div>
             <form action={{ route('posts.store') }} method="post" enctype="multipart/form-data">
                 @csrf

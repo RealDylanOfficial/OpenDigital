@@ -112,7 +112,7 @@ class PostsController extends Controller
             "title" => "required|max:255",
             "description" => "required|max:500",
             "tags" => "required|max:250",
-            "file" => "mimetypes:image/png,image/jpeg,audio/mpeg,audio/x-wav,video/mp4|required",
+            "file" => "mimetypes:application/pdf,image/png,image/jpeg,audio/mpeg,audio/x-wav,video/mp4|required",
             
         ]);
         
@@ -123,7 +123,7 @@ class PostsController extends Controller
         Validator::validate($tags, [
             "*" => "max:32"
             
-        ]);
+        ], ["One of the tags was greater than 32 characters"]);
 
         $tags = array_map("strtolower", $tags);
 
@@ -189,7 +189,7 @@ class PostsController extends Controller
         $file = $request->file("file");
         $file->move(public_path("content"), $filename);
 
-        return redirect("/posts");
+        return redirect("/posts")->with("success", "Post created");
     }
 
     /**
