@@ -70,7 +70,13 @@ class PostsController extends Controller
             $search = explode(" ", $search);
             for ($i=0; $i < count($search); $i++) { 
                 $term = $search[$i];
-                $query->Where("title", "LIKE", "%$term%");
+                if ($i == 0) {
+                    $query->Where("title", "LIKE", "%$term%");
+                }
+                else{
+                    $query->orWhere("title", "LIKE", "%$term%");
+                }
+                
                 $query->orWhere("description", "LIKE", "%$term%");
             }
         }
