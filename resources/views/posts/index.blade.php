@@ -185,7 +185,7 @@
 
         @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
         <img src="/content/{{$post->id . $post->file_ext}}" alt="{{$post->title}}">
-        @elseif (in_array($post->file_ext, [".mp3",".wav"]))
+        @elseif (in_array($post->file_ext, [".mp3",".wav", ".ogg"]))
         <audio controls>
             <source src="/content/{{$post->id . $post->file_ext}}" type="audio/mpeg">
         </audio>

@@ -112,7 +112,7 @@ class PostsController extends Controller
             "title" => "required|max:255",
             "description" => "required|max:500",
             "tags" => "required|max:250",
-            "file" => "mimetypes:application/pdf,image/png,image/jpeg,audio/mpeg,audio/x-wav,video/mp4|required",
+            "file" => "mimetypes:application/pdf,image/png,image/jpeg,audio/mpeg,audio/x-wav,video/mp4,audio/ogg|required",
             
         ]);
         
@@ -155,6 +155,10 @@ class PostsController extends Controller
         else if($file_type == "audio/mpeg"){
             $content_type = "audio";
             $file_ext = ".mp3";
+        }
+        else if($file_type == "audio/ogg"){
+            $content_type = "audio";
+            $file_ext = ".ogg";
         }
         else if($file_type == "video/mp4"){
             $content_type = "video";

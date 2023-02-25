@@ -3,11 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Illuminate\Support\Carbon;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -23,7 +26,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
+        
         DB::table('users')->insert([
             'username' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
@@ -90,6 +93,9 @@ class DatabaseSeeder extends Seeder
             "post_id" => 2,
             "tag_id" => 5,
         ]);
-
+        
+        $user = User::factory()
+            ->has(Post::factory()->count(3)->sequence(["file_ext" => ".ogg", "content_type" => "audio"],["file_ext" => ".mp4", "content_type" => "video"],["file_ext" => ".pdf", "content_type" => "pdf"]))
+            ->create();
     }
 }
