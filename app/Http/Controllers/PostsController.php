@@ -66,21 +66,41 @@ class PostsController extends Controller
 
         // searching
 
-        if ($search) {
-            $search = explode(" ", $search);
-            for ($i=0; $i < count($search); $i++) { 
-                $term = $search[$i];
-                if ($i == 0) {
-                    $query->Where("title", "LIKE", "%$term%");
-                }
-                else{
-                    $query->orWhere("title", "LIKE", "%$term%");
-                }
-                
-                $query->orWhere("description", "LIKE", "%$term%");
-            }
+        // Check if the query contains a phrase in quotes
+        preg_match_all('/"([^"]+)"/', $search, $matches);
+        $exactPhrases = isset($matches[1]) ? $matches[1] : null;
+        // Remove the exact phrase from the query
+        foreach ($exactPhrases as $phrase) {
+            $search = str_replace('"' . $phrase . '"', '', $search);
+            $query->Where("title", "LIKE", "%$phrase%")->orWhere("description", "LIKE", "%$phrase%");
+
         }
 
+
+        if ($search) {
+            $search = explode(" ", $search);
+            $search = array_filter($search);
+
+            $query->where(function($q) use ($search) {
+                foreach ($search as $word) {
+                    $q->orWhere('title', 'LIKE', "%$word%")
+                      ->orWhere('description', 'LIKE', "%$word%");
+                }
+            });
+        
+            // for ($i=0; $i < count($search); $i++) { 
+            //     $term = $search[$i];
+            //     if ($i == 0) {
+            //         $query->Where("title", "LIKE", "%$term%")->orWhere("description", "LIKE", "%$term%");
+            //     }
+            //     else{
+            //         $query->orWhere("title", "LIKE", "%$term%")->orWhere("description", "LIKE", "%$term%");
+            //     }
+                
+
+            // }
+        }
+        
         // DB::connection()->enableQueryLog();
         $posts = $query->get();
         
