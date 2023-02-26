@@ -17,15 +17,35 @@
 
 	<main id="main-holder">
     <h1 id="login-header">Login</h1>
-    
-    <div id="login-error-msg-holder">
-      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+
+    @if(isset(Auth::user()->email))
+      <script>window.location="/test/successlogin";</script>
+    @endif
+
+    @if ($message = Session::get('error'))
+    <div class="alert alert-danger alert-block">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>{{ $message }}</strong>
     </div>
+    @endif
+   
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+      <ul>
+      @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+      </ul>
+    </div>
+    @endif
     
-    <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-      <input type="submit" value="Login" id="login-form-submit">
+    <form method="post" id="login-form" action="{{ url('/test/checklogin') }}">
+      {{ csrf_field() }}
+      <input type="text" name="username" id="username-field" class="form-control" placeholder="Username">
+      <input type="password" name="password" id="password-field" class="form-control" placeholder="Password">
+      <div class="form-group">
+        <input type="submit" name="login" value="Login" class="btn btn-primary" id="login-form-submit">
+      </div>
     </form>
   
   </main>
