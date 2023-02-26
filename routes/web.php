@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\SampleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,25 +21,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/test', function () {
-//     return view('test', ['testHead' => 'head1']);
-// });
-
-// Route::get('/home', function () {
-//     return view('home');
-// });
-
-// Route::get('/login', function () {
-//     return view('login');
-// });
-
-// Route::get('/register', function () {
-//     return view('register');
-// });
-
 Route::resource('posts', PostsController::class);
 
-Route::get('/test', 'MainController@index');
-Route::post('/checklogin', 'MainController@checklogin');
-Route::get('/successlogin', 'MainController@successlogin');
-Route::get('/logout', 'MainController@logout');
+Route::controller(SampleController::class)->group(function(){
+
+    Route::get('login', 'index')->name('login');
+
+    Route::get('registration', 'registration')->name('registration');
+
+    Route::get('logout', 'logout')->name('logout');
+
+    Route::post('validate_registration', 'validate_registration')->name('sample.validate_registration');
+
+    Route::post('validate_login', 'validate_login')->name('sample.validate_login');
+
+    Route::get('dashboard', 'dashboard')->name('dashboard');
+
+});
