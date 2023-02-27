@@ -1,7 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="{{asset("images/logo.png")}}">
+	<title>OpenDigital - Register</title>
+	<link rel="stylesheet" href="register.scss">
+	
+    @viteReactRefresh
+    @vite(["resources/js/app.js", "resources/sass/app.scss", "resources/sass/register.scss"])
+	
+	
+</head>
+
 @extends('main')
-
 @section('content')
-
 @include('inc.navbar')
 
 <div class="row justify-content-center">
