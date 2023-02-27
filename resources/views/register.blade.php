@@ -13,8 +13,7 @@
 	
 </head>
 
-@extends('main')
-@section('content')
+
 @include('inc.navbar')
 
 <div class="row justify-content-center">
@@ -50,4 +49,3 @@
 	</div>
 </div>
 
-@endsection('content')

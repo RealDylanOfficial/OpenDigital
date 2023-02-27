@@ -26,7 +26,7 @@ Route::controller(SampleController::class)->group(function(){
 
     Route::get('login', 'index')->name('login');
 
-    Route::get('registration', 'registration')->name('registration');
+    Route::get('register', 'register')->name('register');
 
     Route::get('logout', 'logout')->name('logout');
 

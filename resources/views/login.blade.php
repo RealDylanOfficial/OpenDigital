@@ -1,6 +1,19 @@
-@extends('main')
+<!DOCTYPE html>
 
-@section('content')
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{{asset("images/logo.png")}}">
+	<title>OpenDigital - Login</title>
+	<link rel="stylesheet" href="login.scss">
+    @viteReactRefresh
+    @vite(["resources/js/app.js", "resources/js/login.js", "resources/sass/app.scss", "resources/sass/login.scss"])
+
+	
+</head>
+
+<main>
 
 @if($message = Session::get('success'))
 
@@ -11,6 +24,7 @@
 @endif
 
 @include('inc.navbar')
+
 
 <div class="row justify-content-center">
 	<div class="col-md-4">
@@ -40,4 +54,5 @@
 	</div>
 </div>
 
-@endsection('content')
+
+</main>

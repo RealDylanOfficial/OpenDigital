@@ -16,9 +16,9 @@ class SampleController extends Controller
         return view('login');
     }
 
-    function registration()
+    function register()
     {
-        return view('registration');
+        return view('register');
     }
 
     function validate_registration(Request $request)
