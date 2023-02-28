@@ -9,6 +9,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\File as Files;
 
 class PostsController extends Controller
 {
@@ -133,11 +134,23 @@ class PostsController extends Controller
     {
         //
         //return $request;
+        Validator::extend('not_banned_word', function ($attribute, $value, $parameters, $validator) {
+            $bannedWords = Files::get(resource_path("banned_words.txt"));
+            $bannedWords = explode(PHP_EOL, $bannedWords);
+        
+            foreach ($bannedWords as $word) {
+                if (stripos($value, $word) !== false) {
+                    return false;
+                }
+            }
+        
+            return true;
+        });
         
         $this->validate($request, [
-            "title" => "required|max:255",
-            "description" => "required|max:500",
-            "tags" => "required|max:250",
+            "title" => "required|max:255|not_banned_word",
+            "description" => "required|max:500|not_banned_word",
+            "tags" => "required|max:250|not_banned_word",
             "file" => "mimetypes:application/pdf,image/png,image/jpeg,audio/mpeg,audio/x-wav,video/mp4,audio/ogg|required",
             
         ]);
