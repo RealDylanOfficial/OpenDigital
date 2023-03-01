@@ -49,13 +49,14 @@ let queryTags: string[] = [];
 for(var i = 0; i < args.length; i++)
 {
     arg = args[i].split('=');
-    if (arg[0] == "tags[]") {
+    let identifier: string = arg[0];
+    if (identifier.slice(0, 4) == "tags") {
       queryTags.push(arg[1]);
     }
     vars.push(arg[0]);
     vars[arg[0]] = arg[1];
 }
-// console.log(args)
+// console.log(args);
 queryTags.forEach(tag => {
   addTag(tag);
   tags.push(tag);

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -95,7 +96,7 @@ class DatabaseSeeder extends Seeder
         ]);
         
         $user = User::factory()
-            ->has(Post::factory()->count(20)->sequence(["file_ext" => ".ogg", "content_type" => "audio"],["file_ext" => ".mp4", "content_type" => "video"],["file_ext" => ".pdf", "content_type" => "pdf"]))
-            ->create();
+            ->has(Post::factory()->count(20)->sequence(["file_ext" => ".ogg", "content_type" => "audio"],["file_ext" => ".mp4", "content_type" => "video"],["file_ext" => ".pdf", "content_type" => "pdf"])->has(Tag::factory()->sequence(["tag" => "testTag1"], ["tag" => "testTag2"], ["tag" => "testTag3"])))->create();
+            
     }
 }

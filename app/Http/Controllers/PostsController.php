@@ -24,6 +24,7 @@ class PostsController extends Controller
         $type = request("type");
         $date = request("date");
         $search = request("search");
+        $sort = request("sort");
 
         $query = Post::query();
 
@@ -102,6 +103,18 @@ class PostsController extends Controller
             // }
         }
         
+
+        if ($sort == "most downloaded") {
+            $sortField = "download_count";
+        }
+        else if ($sort == "most liked") {
+            $sortField = "likes";
+        }
+        else {
+            $sortField = "created_at";
+        }
+
+        $query->orderBy($sortField, "desc");
         // DB::connection()->enableQueryLog();
         $posts = $query->paginate(5);
         
