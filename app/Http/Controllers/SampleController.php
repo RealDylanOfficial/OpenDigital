@@ -24,17 +24,18 @@ class SampleController extends Controller
     function validate_registration(Request $request)
     {
         $request->validate([
-            'name'         =>   'required',
+            'username'         =>   'required',
             'email'        =>   'required|email|unique:users',
-            'password'     =>   'required|min:6'
+            'password_hash'     =>   'required|min:6'
         ]);
 
         $data = $request->all();
 
         User::create([
-            'name'  =>  $data['name'],
+            'username'  =>  $data['username'],
             'email' =>  $data['email'],
-            'password' => Hash::make($data['password'])
+            // 'password_hash' => Hash::make($data['password_hash']) removed for testing
+            'password_hash' => $data['password_hash']
         ]);
 
         return redirect('login')->with('success', 'Registration Completed, now you can login');
@@ -42,11 +43,11 @@ class SampleController extends Controller
     function validate_login(Request $request)
     {
         $request->validate([
-            'email' =>  'required',
+            'username' =>  'required',
             'password'  =>  'required'
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         if(Auth::attempt($credentials))
         {

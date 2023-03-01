@@ -34,9 +34,9 @@
 				<form action="{{ route('sample.validate_login') }}" method="post">
 					@csrf
 					<div class="form-group mb-3">
-						<input type="text" name="email" class="form-control" placeholder="Email" />
-						@if($errors->has('email'))
-							<span class="text-danger">{{ $errors->first('email') }}</span>
+						<input type="text" name="username" class="form-control" placeholder="Username" />
+						@if($errors->has('username'))
+							<span class="text-danger">{{ $errors->first('username') }}</span>
 						@endif
 					</div>
 					<div class="form-group mb-3">
