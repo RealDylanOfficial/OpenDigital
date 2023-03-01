@@ -24,9 +24,9 @@ class SampleController extends Controller
     function validate_registration(Request $request)
     {
         $request->validate([
-            'username'         =>   'required',
+            'username'         =>   'required|unique:users',
             'email'        =>   'required|email|unique:users',
-            'password_hash'     =>   'required|min:6'
+            'password'     =>   'required|min:6'
         ]);
 
         $data = $request->all();
@@ -34,8 +34,8 @@ class SampleController extends Controller
         User::create([
             'username'  =>  $data['username'],
             'email' =>  $data['email'],
-            // 'password_hash' => Hash::make($data['password_hash']) removed for testing
-            'password_hash' => $data['password_hash']
+            'password' => Hash::make($data['password'])
+            // 'password_hash' => $data['password_hash']
         ]);
 
         return redirect('login')->with('success', 'Registration Completed, now you can login');
@@ -48,20 +48,20 @@ class SampleController extends Controller
         ]);
 
         $credentials = $request->only('username', 'password');
-
+        
         if(Auth::attempt($credentials))
         {
-            return redirect('dashboard');
+            return redirect('home');
         }
 
         return redirect('login')->with('success', 'Login details are not valid');
     }
 
-    function dashboard()
+    function home()
     {
         if(Auth::check())
         {
-            return view('dashboard');
+            return view('home');
         }
 
         return redirect('login')->with('success', 'you are not allowed to access');

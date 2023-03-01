@@ -24,7 +24,7 @@
 			<form action="{{ route('sample.validate_registration') }}" method="POST">
 				@csrf
 				<div class="form-group mb-3">
-					<input type="text" name="username" class="form-control" placeholder="Userame" />
+					<input type="text" name="username" class="form-control" placeholder="Username" />
 					@if($errors->has('username'))
 						<span class="text-danger">{{ $errors->first('username') }}</span>
 					@endif
@@ -36,7 +36,7 @@
 					@endif
 				</div>
 				<div class="form-group mb-3">
-					<input type="password" name="password_hash" class="form-control" placeholder="Password" />
+					<input type="password" name="password" class="form-control" placeholder="Password" />
 					@if($errors->has('password'))
 						<span class="text-danger">{{ $errors->first('password') }}</span>
 					@endif
