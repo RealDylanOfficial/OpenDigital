@@ -103,7 +103,7 @@ class PostsController extends Controller
         }
         
         // DB::connection()->enableQueryLog();
-        $posts = $query->get();
+        $posts = $query->paginate(5);
         
         // $queries = DB::getQueryLog();
         // $last_query = end($queries);

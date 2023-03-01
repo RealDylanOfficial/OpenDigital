@@ -144,13 +144,13 @@
 
 
 
-    <div class="container mt-8">
-        <div class="" style="margin-left:20%; width:60%;">
+    <div class="container mt-8" style="margin-left:20%; width:60%;">
+        <div class="" >
             @include('inc.messages')
         </div>
         
         @if (request("search"))
-            <div class="mb-8 text-l" style="margin-left:20%; width:60%">
+            <div class="mb-8 text-l">
                 <h1>Searching for: "{{request("search")}}"</h1>
                 <div class="hidden" id="searchTerm">{{request("search")}}</div>
             </div>
@@ -166,16 +166,16 @@
                 @php $sortField = "created_at"; @endphp
             @endif
 
-            @php $posts = $posts->sortByDesc($sortField); @endphp
+            @php $sortedPosts = $posts->sortByDesc($sortField); @endphp
             
-        @foreach ($posts as $post)
+        @foreach ($sortedPosts as $post)
         {{-- <div class="flex items-center">
                 <div class="border-2 rounded-lg flex m-auto">
                     <h1 class="text-2xl">{{$post->title}}</h1>
     </div>
     </div> --}}
 
-    <div class="card card-body bg-light mb-5" style="margin-left:20%; width:60%">
+    <div class="card card-body bg-light mb-5">
         <a href="#" class="flex h-20 border-b"> 
             <img class="rounded-full object-cover h-16 w-16" src="/images/profile_pictures/{{$post->user->profile_picture}}" alt="">
             <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
@@ -209,10 +209,15 @@
 
 
     @endforeach
+    <div class="" style="">
+        {{ $posts->links() }}
+    </div>
     @else
     </div>
     <p>No posts found</p>
     @endif
+
+
     
     
 </body>

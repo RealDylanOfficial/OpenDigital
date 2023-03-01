@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
         ]);
         
         $user = User::factory()
-            ->has(Post::factory()->count(3)->sequence(["file_ext" => ".ogg", "content_type" => "audio"],["file_ext" => ".mp4", "content_type" => "video"],["file_ext" => ".pdf", "content_type" => "pdf"]))
+            ->has(Post::factory()->count(20)->sequence(["file_ext" => ".ogg", "content_type" => "audio"],["file_ext" => ".mp4", "content_type" => "video"],["file_ext" => ".pdf", "content_type" => "pdf"]))
             ->create();
     }
 }
