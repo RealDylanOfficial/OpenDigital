@@ -8,6 +8,7 @@
 </head>
 <body>
 @include('inc.navbar')
+@include('inc.messages')
 </body>
 </html>
 

@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -12,23 +12,39 @@
 
 	
 </head>
-<body>
-	@include('inc.navbar')
 
-	<main id="main-holder">
-    <h1 id="login-header">Login</h1>
-    
-    <div id="login-error-msg-holder">
-      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-    </div>
-    
-    <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-      <input type="submit" value="Login" id="login-form-submit">
-    </form>
-  
-  </main>
+<main>	
 
-</body>
-</html>
+@include('inc.navbar')
+@include('inc.messages')
+
+<div class="row justify-content-center">
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-header">Login</div>
+			<div class="card-body">
+				<form action="{{ route('sample.validate_login') }}" method="post">
+					@csrf
+					<div class="form-group mb-3">
+						<input type="text" name="username" class="form-control" placeholder="Username" />
+						@if($errors->has('username'))
+							<span class="text-danger">{{ $errors->first('username') }}</span>
+						@endif
+					</div>
+					<div class="form-group mb-3">
+						<input type="password" name="password" class="form-control" placeholder="Password" />
+						@if($errors->has('password'))
+							<span class="text-danger">{{ $errors->first('password') }}</span>
+						@endif
+					</div>
+					<div class="d-grid mx-auto">
+						<button type="submit" class="btn btn-dark btn-block auth-button">Login</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</main>
