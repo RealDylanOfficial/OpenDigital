@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'username' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
-            'password_hash' => 'wekjfsnmn',
+            'password' => Hash::make('wekjfsnmn'),
             'created_at' => Carbon::now(),
             'profile_picture' => "bird.jpg"
         ]);

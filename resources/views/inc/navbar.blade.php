@@ -51,6 +51,14 @@
 
         </div>
         <div>
+        {{-- check if user is logged in --}}
+            @if (Auth::check())
+            <ul class="flex text-blue-500">
+                <li class="mr-6">
+                    <a class="hover:text-blue-800 text-2xl" href="{{ route('logout') }}">Logout</a>
+                </li>
+            </ul>            
+            @else
             {{-- login and register buttons --}}
             <ul class="flex text-blue-500">
                 <li class="mr-6">
@@ -60,6 +68,7 @@
                     <a class="hover:text-blue-800 text-2xl" href="register">Register</a>
                 </li>
             </ul>
+            @endif
         </div>
         <div>
             {{-- view account button with profile icon --}}
