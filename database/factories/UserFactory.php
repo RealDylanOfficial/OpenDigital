@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'username' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'profile_picture' => 'bird.jpg',
-            'password_hash' => '$2y$1t2.uheWG/igi', // password
+            'password' => '$2y$1t2.uheWG/igi', // password
         ];
     }
 

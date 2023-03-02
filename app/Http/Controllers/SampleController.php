@@ -51,10 +51,10 @@ class SampleController extends Controller
         
         if(Auth::attempt($credentials))
         {
-            return redirect('home');
+            return redirect('home')->with('success', 'Login successful');
         }
 
-        return redirect('login')->with('success', 'Login details are not valid');
+        return redirect('login')->with('error', 'Login details are not valid');
     }
 
     function home()
@@ -64,7 +64,7 @@ class SampleController extends Controller
             return view('home');
         }
 
-        return redirect('login')->with('success', 'you are not allowed to access');
+        return redirect('login')->with('error', 'you are not allowed to access');
     }
 
     function logout()

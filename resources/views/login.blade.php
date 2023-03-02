@@ -13,18 +13,10 @@
 	
 </head>
 
-<main>
-
-@if($message = Session::get('success'))
-
-<div class="alert alert-info">
-{{ $message }}
-</div>
-
-@endif
+<main>	
 
 @include('inc.navbar')
-
+@include('inc.messages')
 
 <div class="row justify-content-center">
 	<div class="col-md-4">
