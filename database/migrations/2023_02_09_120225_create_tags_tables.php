@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("tag");
 
         });
-        Schema::create('tags_relation', function (Blueprint $table) {
+        Schema::create('post_tag', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('tag_id');
@@ -35,7 +35,7 @@ return new class extends Migration
     public function down()
     {
         
-        Schema::dropIfExists('tags_relation');
+        Schema::dropIfExists('post_tag');
         Schema::dropIfExists('tags');
     }
 };

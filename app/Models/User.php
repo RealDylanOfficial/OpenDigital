@@ -12,4 +12,8 @@ class User extends Authenticable{
     protected $fillable = ['username', 'password','email'];
     public $primaryKey = "id";
     public $timestamps = true;
+
+    public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }
 }
