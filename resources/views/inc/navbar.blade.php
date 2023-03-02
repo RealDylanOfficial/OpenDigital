@@ -10,16 +10,16 @@
             {{-- menu with links to pages --}}
             <ul class="flex text-blue-500">
                 <li class="mr-6">
-                  <a class="hover:text-blue-800 text-2xl" href="#">Text</a>
+                  <a class="hover:text-blue-800 text-2xl" href="/posts/?type=pdf">PDF</a>
                 </li>
                 <li class="mr-6">
-                  <a class="hover:text-blue-800 text-2xl" href="#">Audio</a>
+                  <a class="hover:text-blue-800 text-2xl" href="/posts/?type=audio">Audio</a>
                 </li>
                 <li class="mr-6">
-                  <a class="hover:text-blue-800 text-2xl" href="#">Research</a>
+                  <a class="hover:text-blue-800 text-2xl" href="/posts/?type=video">Video</a>
                 </li>
                 <li class="mr-6">
-                  <a class="hover:text-blue-800 text-2xl" href="#">Images</a>
+                  <a class="hover:text-blue-800 text-2xl" href="/posts/?type=images">Images</a>
                 </li>
               </ul>
         </div>
@@ -27,7 +27,7 @@
             {{-- upload post button --}}
             <ul class="flex border-2 border-blue-500 bg-blue-500 rounded-lg text-white hover:border-blue-800 hover:bg-blue-800 text-2xl">
                 <li class="mr-3">
-                    <a class="ml-3" href="#">Post</a>
+                    <a class="ml-3" href="/posts/create">+ Post</a>
                 </li>
             </ul>
         </div>
@@ -62,10 +62,10 @@
             {{-- login and register buttons --}}
             <ul class="flex text-blue-500">
                 <li class="mr-6">
-                    <a class="hover:text-blue-800 text-2xl" href="login">Login</a>
+                    <a class="hover:text-blue-800 text-2xl" href="/login">Login</a>
                 </li>
                 <li class="mr-6">
-                    <a class="hover:text-blue-800 text-2xl" href="register">Register</a>
+                    <a class="hover:text-blue-800 text-2xl" href="/register">Register</a>
                 </li>
             </ul>
             @endif

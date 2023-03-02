@@ -38,7 +38,7 @@
 						@endif
 					</div>
 					<div class="d-grid mx-auto">
-						<button type="submit" class="btn btn-dark btn-block">Login</button>
+						<button type="submit" class="btn btn-dark btn-block auth-button">Login</button>
 					</div>
 				</form>
 			</div>

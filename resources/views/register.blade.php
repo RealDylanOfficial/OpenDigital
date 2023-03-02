@@ -42,7 +42,7 @@
 					@endif
 				</div>
 				<div class="d-grid mx-auto">
-					<button type="submit" class="btn btn-dark btn-block">Register</button>
+					<button type="submit" class="btn btn-dark btn-block auth-button">Register</button>
 				</div>
 			</form>
 		</div>
