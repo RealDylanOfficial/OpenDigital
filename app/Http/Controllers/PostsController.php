@@ -8,8 +8,11 @@ use App\Models\Tag;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\File;
+use App\Http\Controllers\SampleController;
 use Illuminate\Support\Facades\File as Files;
+use Illuminate\Routing\Controllers\Middleware;
 
 class PostsController extends Controller
 {
@@ -134,7 +137,8 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
+        return SampleController::checkUser('posts.create');
+        
     }
 
     /**
@@ -184,7 +188,7 @@ class PostsController extends Controller
         $post->description = $request->input("description");
         $post->download_count = 0;
         $post->likes = 0;
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
 
         $file_type = $request->file("file")->getMimeType();
 

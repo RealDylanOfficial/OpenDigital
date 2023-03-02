@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class SampleController extends Controller
 {
+    public static function checkUser($page, $redirect = 'login'){
+        if(Auth::check())
+        {
+            return view($page);
+        }
+
+        return redirect($redirect)->with('error', 'you are not allowed to access');
+    }
     function index()
     {
         return view('login');
@@ -59,13 +67,10 @@ class SampleController extends Controller
 
     function home()
     {
-        if(Auth::check())
-        {
-            return view('home');
-        }
-
-        return redirect('login')->with('error', 'you are not allowed to access');
+        return SampleController::checkUser('home');
     }
+
+    
 
     function logout()
     {
