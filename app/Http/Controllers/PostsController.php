@@ -296,5 +296,11 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+        $query = Post::query();
+        $query->where("id", $id);
+        $post = $query->first();
+        if (Auth::user()->id == $post->user_id){
+            $post->delete();
+        }
     }
 }
