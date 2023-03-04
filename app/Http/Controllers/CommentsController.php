@@ -35,7 +35,32 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::extend('not_banned_word', function ($attribute, $value, $parameters, $validator) {
+            $bannedWords = Files::get(resource_path("banned_words.txt"));
+            $bannedWords = explode(PHP_EOL, $bannedWords);
         
+            foreach ($bannedWords as $word) {
+                if (stripos($value, $word) !== false) {
+                    return false;
+                }
+            }
+        
+            return true;
+        });
+        
+        $this->validate($request, [
+            "comment" => "required|max:500|not_banned_word",
+        ]);
+
+        $comment = new Comment;
+        $comment->content = $request->input("comment");
+        $comment->likes = 0;
+        $comment->user_id = Auth::user()->id;
+        $comment->post_id = Auth::post()->id;
+
+        $comment->save();
+
+        return redirect("/posts/{{$comment->post_id}}")->with("success", "Comment added");
     }
 
     /**
