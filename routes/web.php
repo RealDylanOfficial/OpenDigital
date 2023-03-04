@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('profile', function () {
+    return view('profile');
+});
+
 Route::resource('posts', PostsController::class);
 
 Route::controller(SampleController::class)->group(function(){
