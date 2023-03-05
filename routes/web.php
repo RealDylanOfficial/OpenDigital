@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SampleController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,10 @@ Route::get('/', function () {
 });
 
 Route::get('profile', function () {
-    return view('profile');
+    if (Auth::check()) {
+        return view('profile');
+    }
+    return view('login');
 });
 
 Route::resource('posts', PostsController::class);
@@ -39,5 +43,6 @@ Route::controller(SampleController::class)->group(function(){
     Route::post('validate_login', 'validate_login')->name('sample.validate_login');
 
     Route::get('home', 'home')->name('home');
+    
 
 });

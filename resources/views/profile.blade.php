@@ -32,14 +32,14 @@
                 </div>
               </div>
             </div>
-           
+
             <div class="card-body pt-0 pt-md-4">
             
               <div class="text-center">
                 <h3>
-                  John Doe<span class="font-weight-light">, 20</span>
+                  {{ Auth::user()->username }}
                 </h3>
-                <div class="h5 font-weight-300">
+                <!-- <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Manchester, United Kingdom
                 </div>
                 <div class="h5 mt-4">
@@ -47,10 +47,9 @@
                 </div>
                 <div>
                   <i class="ni education_hat mr-2"></i>University of Manchester
-                </div>
+                </div> -->
                 <hr class="my-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer erat sem, feugiat ut consequat vel, blandit id nisl. Nunc feugiat purus eu risus vulputate, sit amet ullamcorper dolor lacinia. Donec quis purus orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et viverra nunc. In et risus velit.</p>
-                <a href="#">Show more</a>
+                <p>{{ Auth::user()->profile_description }}</p>
               </div>
             </div>
           </div>
@@ -79,13 +78,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="random123">
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{ Auth::user()->username }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="random@gmail.com">
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="{{ Auth::user()->email }}">
                       </div>
                     </div>
                   </div>
