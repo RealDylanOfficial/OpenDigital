@@ -61,9 +61,7 @@
                 <div class="col-8">
                   <h3 class="mb-0">My Account</h3>
                 </div>
-                <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Edit Profile</a>
-                </div>
+
               </div>
             </div>
 
@@ -71,43 +69,44 @@
 			<!-- card -->
 
             <div class="card-body"> 
-              <form>
+              <form method="POST">
+                @csrf
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{ Auth::user()->username }}">
+                        <label class="form-control-label">Username</label>
+                        <input type="text" id="username" name="username" class="form-control form-control-alternative" value="{{ Auth::user()->username }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="{{ Auth::user()->email }}">
+                        <label class="form-control-label">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control form-control-alternative" value="{{ Auth::user()->email }}">
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First name</label>
                         <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="random">
                       </div>
-                    </div>
-                    <div class="col-lg-6">
+                    </div> -->
+                    <!-- <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Last name</label>
                         <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="123">
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <hr class="my-4">
 
 
                 <!-- Address -->
-                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <!-- <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-md-12">
@@ -138,7 +137,7 @@
                     </div>
                   </div>
                 </div>
-                <hr class="my-4">
+                <hr class="my-4"> -->
                 <!-- Description -->
 
 
@@ -146,8 +145,11 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae urna congue, dapibus turpis eget, ultricies risus. Praesent sed scelerisque elit. Etiam et varius nibh.</textarea>
+                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">{{ Auth::user()->profile_description }}</textarea>
                   </div>
+                </div>
+                <div>
+                  <button class="btn btn-sm btn-primary" type="submit">Update Profile</button>
                 </div>
               </form>
             </div>
