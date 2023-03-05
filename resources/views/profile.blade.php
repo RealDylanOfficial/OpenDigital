@@ -27,7 +27,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="images/default.jpg" class="rounded-circle">
+                    <img src="images/profile_pictures/default.jpg" class="rounded-circle">
                   </a>
                 </div>
               </div>
