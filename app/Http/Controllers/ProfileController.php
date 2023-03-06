@@ -27,6 +27,10 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         if($request->filled('username')){
+
+            if (File::exists('images/profile_pictures'.'/'.$user->username.'.'.$user->pfp_file_extension)) {
+                File::move('images/profile_pictures'.'/'.$user->username.'.'.$user->pfp_file_extension, 'images/profile_pictures'.'/'.$request->input('username').'.'.$user->pfp_file_extension);
+            }
             $user->username = $request->input('username');
         }
         if($request->filled('email')){
