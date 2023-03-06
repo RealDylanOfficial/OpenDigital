@@ -77,19 +77,19 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label">Username</label>
-                        <input type="text" id="username" name="username" class="form-control form-control-alternative" value="{{ Auth::user()->username }}">
+                        <input type="text" id="username" name="username" class="form-control form-control-alternative" placeholder="{{ Auth::user()->username }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">Email address</label>
-                        <input type="email" id="email" name="email" class="form-control form-control-alternative" value="{{ Auth::user()->email }}">
+                        <input type="email" id="email" name="email" class="form-control form-control-alternative" placeholder="{{ Auth::user()->email }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label">Profile Picture</label>
-                        <input type="file" class="file" name="file" id="file">
+                        <input type="file" class="file" name="file" id="file" accept=".png, .jpg, .jpeg">
                       </div>
                   </div>
                   <div class="row">
@@ -150,7 +150,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>About Me</label>
-                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">{{ Auth::user()->profile_description }}</textarea>
+                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" placeholder="{{ Auth::user()->profile_description }}"></textarea>
                   </div>
                 </div>
                 <div>

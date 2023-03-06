@@ -19,24 +19,31 @@ class ProfileController extends Controller
         //validation rules
 
         $request->validate([
-            'username' =>'required|min:4|unique:users,username|string|max:255',
-            'email'=>'required|unique:users,email|email:filter|max:255',
-            'profile_description'=>'string',
+            'username' =>'nullable|min:4|unique:users,username|string|max:255',
+            'email'=>'nullable|unique:users,email|email:filter|max:255',
+            'profile_description'=>'nullable|string|max:10000',
             'file'=> 'max:10000'
         ]);
         $user = Auth::user();
-        $user->username = $request['username'];
-        $user->email = $request['email'];
-        $user->profile_description = $request['profile_description'];
-        
+
+        if($request->filled('username')){
+            $user->username = $request->input('username');
+        }
+        if($request->filled('email')){
+            $user->email = $request->input('email');
+        }
+        if($request->filled('profile_description')){
+            $user->profile_description = $request->input('profile_description');
+        }
+
         if($request->hasFile('file')){
             if ($request['file']->isValid()) {
                 $file = $request['file'];
                 $destination = 'images/profile_pictures'.'/';
                 $ext= $file->getClientOriginalExtension();
                 $mainFilename = $user->username;
-
-                //check if user has existing pfp
+                $user->pfp_file_extension = $ext;
+                // check if user has existing pfp
                 if (File::exists($destination, $mainFilename.".".$user->pfp_file_extension)) {
                     File::delete($destination, $mainFilename.".".$user->pfp_file_extension);
                 }
@@ -46,7 +53,7 @@ class ProfileController extends Controller
 
 
 
-        $user->pfp_file_extension = $ext;
+        
    
         $user->save();
         return back()->with('message','Profile Updated');
