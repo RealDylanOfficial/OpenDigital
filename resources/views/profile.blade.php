@@ -69,7 +69,7 @@
 			<!-- card -->
 
             <div class="card-body"> 
-              <form method="POST">
+              <form method="POST" enctype="multipart/form-data">
                 @csrf
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
@@ -86,6 +86,11 @@
                         <input type="email" id="email" name="email" class="form-control form-control-alternative" value="{{ Auth::user()->email }}">
                       </div>
                     </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label">Profile Picture</label>
+                        <input type="file" class="file" name="file" id="file">
+                      </div>
                   </div>
                   <div class="row">
                     <!-- <div class="col-lg-6">
