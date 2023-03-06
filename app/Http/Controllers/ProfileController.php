@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File; 
 
 
 class ProfileController extends Controller
@@ -20,8 +19,8 @@ class ProfileController extends Controller
         //validation rules
 
         $request->validate([
-            'username' =>'required|min:4|string|max:255',
-            'email'=>'required|email|string|max:255',
+            'username' =>'required|min:4|unique:users,username|string|max:255',
+            'email'=>'required|unique:users,email|email:filter|max:255',
             'profile_description'=>'string',
             'file'=> 'max:10000'
         ]);
@@ -36,9 +35,16 @@ class ProfileController extends Controller
                 $destination = 'images/profile_pictures'.'/';
                 $ext= $file->getClientOriginalExtension();
                 $mainFilename = $user->username;
+
+                //check if user has existing pfp
+                if (File::exists($destination, $mainFilename.".".$user->pfp_file_extension)) {
+                    File::delete($destination, $mainFilename.".".$user->pfp_file_extension);
+                }
                 $file->move($destination, $mainFilename.".".$ext);
             }
         }
+
+
 
         $user->pfp_file_extension = $ext;
    
