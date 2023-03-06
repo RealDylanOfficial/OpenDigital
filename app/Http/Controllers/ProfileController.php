@@ -33,7 +33,7 @@ class ProfileController extends Controller
         if($request->hasFile('file')){
             if ($request['file']->isValid()) {
                 $file = $request['file'];
-                $destination = 'public/images/profile_pictures'.'/';
+                $destination = 'images/profile_pictures'.'/';
                 $ext= $file->getClientOriginalExtension();
                 $mainFilename = $user->username;
                 $file->move($destination, $mainFilename.".".$ext);
@@ -45,4 +45,6 @@ class ProfileController extends Controller
         $user->save();
         return back()->with('message','Profile Updated');
     }
+
+    
 }
