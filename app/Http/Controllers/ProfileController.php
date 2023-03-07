@@ -28,9 +28,9 @@ class ProfileController extends Controller
 
         if($request->filled('username')){
 
-            if (File::exists('images/profile_pictures'.'/'.$user->username.'.'.$user->pfp_file_extension)) {
-                File::move('images/profile_pictures'.'/'.$user->username.'.'.$user->pfp_file_extension, 'images/profile_pictures'.'/'.$request->input('username').'.'.$user->pfp_file_extension);
-            }
+            // if (File::exists('images/profile_pictures'.'/'.$user->username.'.'.$user->pfp_file_extension)) {
+            //     File::move('images/profile_pictures'.'/'.$user->username.'.'.$user->pfp_file_extension, 'images/profile_pictures'.'/'.$request->input('username').'.'.$user->pfp_file_extension);
+            // }
             $user->username = $request->input('username');
         }
         if($request->filled('email')){
@@ -45,7 +45,7 @@ class ProfileController extends Controller
                 $file = $request['file'];
                 $destination = 'images/profile_pictures'.'/';
                 $ext= $file->getClientOriginalExtension();
-                $mainFilename = $user->username;
+                $mainFilename = $user->id;
                 $user->pfp_file_extension = $ext;
                 // check if user has existing pfp
                 if (File::exists($destination, $mainFilename.".".$user->pfp_file_extension)) {
