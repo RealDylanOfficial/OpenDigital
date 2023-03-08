@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string("username", 128)->unique();
             $table->string("password", 60);     //Salt is store in password hash using Bcrypt
-            $table->string("profile_picture")->nullable();       //relative filepath to picture
+            $table->string("pfp_file_extension")->default('jpg');       //relative filepath to picture
             $table->string("email")->unique();
+            $table->text("profile_description")->nullable();
             $table->timestamps();
             //Also note that when running migrations, a personal access token table is created as well. This is part of laravel Sanctum and I can disable it but we may wish to use it in the future
         });
