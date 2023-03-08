@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File; 
+
 
 
 class ProfileController extends Controller
@@ -54,6 +56,7 @@ class ProfileController extends Controller
                 $file->move($destination, $mainFilename.".".$ext);
             }
         }
+        $user->updated_at = Carbon::now();
 
 
 
