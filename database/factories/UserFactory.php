@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'username' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'profile_picture' => 'bird.jpg',
+            'pfp_file_extension' => 'jpg',
             'password' => '$2y$1t2.uheWG/igi', // password
         ];
     }
