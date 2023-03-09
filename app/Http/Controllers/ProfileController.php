@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,24 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile');
+        if (Auth::check()) {
+            return view('profile')->with("user", Auth::user())->with("auth", true);
+        }
+        else{
+            return redirect('login')->with('error', 'you are not allowed to access');
+        }
+        
+    }
+
+    public function show($id){
+        $user = User::find($id);
+        if ($user == Auth::user()) {
+            return view("profile")->with("user", $user)->with("auth", true);
+        }
+        else{
+            return view("profile")->with("user", $user)->with("auth", false);
+        }
+        
     }
     
     public function profileUpdate(Request $request){

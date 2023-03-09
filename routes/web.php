@@ -47,5 +47,7 @@ Route::controller(SampleController::class)->group(function(){
 
 });
 
-Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile');
-Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->name('profileupdate');
+Route::resource('profile', ProfileController::class);
+
+// Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile');
+// Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->name('profileupdate');

@@ -27,7 +27,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="{{ url('images/profile_pictures/'.Auth::user()->id.'.'.Auth::user()->pfp_file_extension) }}" onerror="this.onerror=null; this.src='images/profile_pictures/default.jpg'" class="rounded-circle">
+                    <img src="{{ url('images/profile_pictures/'.$user->id.'.'.$user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='images/profile_pictures/default.jpg'" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -37,7 +37,7 @@
             
               <div class="text-center">
                 <h3>
-                  {{ Auth::user()->username }}
+                  {{ $user->username }}
                 </h3>
                 <!-- <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Manchester, United Kingdom
@@ -49,7 +49,7 @@
                   <i class="ni education_hat mr-2"></i>University of Manchester
                 </div> -->
                 <hr class="my-4">
-                <p>{{ Auth::user()->profile_description }}</p>
+                <p>{{ $user->profile_description }}</p>
               </div>
             </div>
           </div>
@@ -77,13 +77,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label">Username</label>
-                        <input type="text" id="username" name="username" class="form-control form-control-alternative" placeholder="{{ Auth::user()->username }}">
+                        <input type="text" id="username" name="username" class="form-control form-control-alternative" placeholder="{{ $user->username }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">Email address</label>
-                        <input type="email" id="email" name="email" class="form-control form-control-alternative" placeholder="{{ Auth::user()->email }}">
+                        <input type="email" id="email" name="email" class="form-control form-control-alternative" placeholder="{{ $user->email }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -150,7 +150,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>About Me</label>
-                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" placeholder="{{ Auth::user()->profile_description }}"></textarea>
+                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" placeholder="{{ $user->profile_description }}"></textarea>
                   </div>
                 </div>
                 <div>
