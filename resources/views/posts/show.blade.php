@@ -38,11 +38,17 @@
                 
             @endif
             <small>Posted at: {{$post->created_at}}</small>
-            <form class="" action=>     
+            <form action={{ route('comments.store') }} method="comment" enctype="multipart/form-data">    
+                 @csrf
                 <label class="mt-4 text-xl">Comments</label>
-                <textarea class="form-control resize-none h-24" id="commentInput" placeholder="Add a Comment..." name="comment" maxlength="600"></textarea>   
+                <textarea class="form-control resize-none h-24" id="commentInput" placeholder="Add a Comment..." name="comment" maxlength="500"></textarea>   
                 <button class="btn btn-primary mt-2" style="background-color: #007bff; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;" type="submit">Comment</button>
             </form>
+            @foreach ($comments as $comment)
+            @if (in_array($comment->post_id, [$posts->id]))
+            <h1>a</h1>
+            @endif
+            @endforeach
         </div>
     </div>
 </body>

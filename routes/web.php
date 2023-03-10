@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\SampleController;
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', PostsController::class);
+
+Route::resource('comments', CommentsController::class);
 
 Route::controller(SampleController::class)->group(function(){
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\SampleController;
 use Illuminate\Http\Request;
+use App\models\Comment;
+use Illuminate\Routing\Controllers\Middleware;
 
 class CommentsController extends Controller
 {
