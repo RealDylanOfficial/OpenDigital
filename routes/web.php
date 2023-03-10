@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\SampleController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +20,15 @@ use App\Http\Controllers\SampleController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+// Route::get('profile', function () {
+//     if (Auth::check()) {
+//         return view('profile');
+//     }
+//     return view('login');
+// });
 
 Route::resource('posts', PostsController::class);
 
@@ -40,3 +49,8 @@ Route::controller(SampleController::class)->group(function(){
     Route::get('home', 'home')->name('home');
 
 });
+
+Route::resource('profile', ProfileController::class);
+
+// Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile');
+// Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->name('profileupdate');

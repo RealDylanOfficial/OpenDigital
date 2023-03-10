@@ -74,7 +74,7 @@
             {{-- view account button with profile icon --}}
             <ul class="flex text-blue-500">
                 <li class="mr-6">
-                  <a class="hover:text-blue-800 text-2xl" href="#">Account</a>
+                  <a class="hover:text-blue-800 text-2xl" href="/profile">Account</a>
                 </li>
             </ul>
         </div>

@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('wekjfsnmn'),
             'created_at' => Carbon::now(),
-            'profile_picture' => "bird.jpg"
+            'pfp_file_extension' => "jpg"
         ]);
 
         DB::table('posts')->insert([
