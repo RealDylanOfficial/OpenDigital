@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -16,7 +17,11 @@ class ProfileController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return view('profile')->with("user", Auth::user())->with("auth", true);
+            $query = Post::query();
+            $query->where("user_id", Auth::user()->id);
+            $query->orderBy("created_at", "desc");
+            $posts = $query->paginate(5);
+            return view('profile')->with("user", Auth::user())->with("auth", true)->with("posts", $posts);
         }
         else{
             return redirect('login')->with('error', 'you are not allowed to access');
@@ -26,11 +31,18 @@ class ProfileController extends Controller
 
     public function show($id){
         $user = User::find($id);
+        if ($user == null) {
+            abort("404");
+        }
+        $query = Post::query();
+        $query->where("user_id", $user->id);
+        $query->orderBy("created_at", "desc");
+        $posts = $query->paginate(5);
         if ($user == Auth::user()) {
-            return view("profile")->with("user", $user)->with("auth", true);
+            return view("profile")->with("user", $user)->with("auth", true)->with("posts", $posts);
         }
         else{
-            return view("profile")->with("user", $user)->with("auth", false);
+            return view("profile")->with("user", $user)->with("auth", false)->with("posts", $posts);
         }
         
     }

@@ -13,8 +13,9 @@
     <div class="container">
         <div class="" style="">
             
-            <a href="#" class="flex mt-3 h-20 border-b flex"> 
-                <img class="rounded-full object-cover h-16 w-16" src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='images/profile_pictures/default.jpg'" alt="">
+            <a href="/profile/{{$post->user->id}}" class="flex h-20 border-b">
+                <img class="rounded-full object-cover h-16 w-16"
+                src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
                 <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
             </a>
             <h1 class="text-2xl">{{$post->title}}</h1>
