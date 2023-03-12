@@ -54,6 +54,7 @@
             </div>
           </div>
         </div>
+        @if($user == Auth::user())
         <div class="col-xl-8 order-xl-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
@@ -160,6 +161,7 @@
             </div>
           </div>
         </div>
+        @endif
       </div>
       
     </div>
