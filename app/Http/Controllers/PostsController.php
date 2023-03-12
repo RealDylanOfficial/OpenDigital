@@ -261,6 +261,9 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        if ($post == null) {
+            abort("404");
+        }
         return view('posts.show')->with('post', $post);
     }
 
@@ -299,8 +302,13 @@ class PostsController extends Controller
         $query = Post::query();
         $query->where("id", $id);
         $post = $query->first();
-        if (Auth::user()->id == $post->user_id){
-            $post->delete();
+        if (Auth::check()) {
+            if (Auth::user()->id == $post->user_id){
+                $post->delete();
+            }
+            return redirect("/profile")->with("success", "post deleted successfully");
         }
+        
+        
     }
 }

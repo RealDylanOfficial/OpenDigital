@@ -167,9 +167,9 @@
     </div> --}}
 
     <div class="card card-body bg-light mb-5">
-        <a href="#" class="flex h-20 border-b">
+        <a href="/profile/{{$post->user->id}}" class="flex h-20 border-b">
             <img class="rounded-full object-cover h-16 w-16"
-            src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='images/profile_pictures/default.jpg'" alt="">
+            src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
             <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
         </a>
         <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
