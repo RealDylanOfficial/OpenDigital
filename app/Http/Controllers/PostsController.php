@@ -267,6 +267,24 @@ class PostsController extends Controller
     }
 
     /**
+     * Flag the post for moderation
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function flag($id)
+    {
+        $post = Post::find($id);
+        if ($post->flag != 1){
+            $post->flag = 1;
+            $post->save();
+            return redirect()->back()->with("success", "post has been flagged");
+        }
+        return redirect()->back()->with("success", "post already flagged");
+        
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

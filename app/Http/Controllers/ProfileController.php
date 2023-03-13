@@ -78,6 +78,7 @@ class ProfileController extends Controller
                 $destination = 'images/profile_pictures'.'/';
                 $ext= $file->getClientOriginalExtension();
                 $mainFilename = $user->id;
+                
                 $user->pfp_file_extension = $ext;
                 // check if user has existing pfp
                 if (File::exists($destination, $mainFilename.".".$user->pfp_file_extension)) {
