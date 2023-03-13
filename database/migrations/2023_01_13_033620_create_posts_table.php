@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string("content_type", 32);
             $table->text("description");
             $table->timestamps();
+            $table->tinyInteger("flag")->default(0);
         });
     }
 
