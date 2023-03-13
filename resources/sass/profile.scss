@@ -9,7 +9,7 @@
     --green: #2dce89;
     --teal: #11cdef;
     --cyan: #2bffc6;
-    --white: #fff;
+    --white: #e0e0e0;
     --gray: #8898aa;
     --gray-dark: #32325d;
     --light: #ced4da;
@@ -40,19 +40,7 @@
   *::after {
     box-sizing: border-box;
   }
-  
-  html {
-    font-family: sans-serif;
-    line-height: 1.15;
-    
-    -ms-text-size-adjust: 100%;
-    -ms-overflow-style: scrollbar;
-   
-  }
-  
-  @-ms-viewport {
-    width: device-width;
-  }
+
   
   figcaption,
   footer,
@@ -62,7 +50,8 @@
   section {
     display: block;
   }
-  
+
+
   body {
     font-family: Open Sans, sans-serif;
     font-size: 1rem;
@@ -73,10 +62,7 @@
     color: #525f7f;
     background-color: #f8f9fe;
   }
-  
-  [tabindex='-1']:focus {
-    outline: 0 !important;
-  }
+
   
   hr {
     overflow: visible;
@@ -937,63 +923,6 @@
     .container {
       min-width: 992px !important;
     }
-  
- 
-  
-  figcaption,
-  main {
-    display: block;
-  }
-  
-  main {
-    overflow: hidden;
-  }
-  
-  
-  
-  
-  
-  @keyframes floating-lg {
-    0% {
-      transform: translateY(0px);
-    }
-  
-    50% {
-      transform: translateY(15px);
-    }
-  
-    100% {
-      transform: translateY(0px);
-    }
-  }
-  
-  @keyframes floating {
-    0% {
-      transform: translateY(0px);
-    }
-  
-    50% {
-      transform: translateY(10px);
-    }
-  
-    100% {
-      transform: translateY(0px);
-    }
-  }
-  
-  @keyframes floating-sm {
-    0% {
-      transform: translateY(0px);
-    }
-  
-    50% {
-      transform: translateY(5px);
-    }
-  
-    100% {
-      transform: translateY(0px);
-    }
-  }
   
   .opacity-8 {
     opacity: .8 !important;

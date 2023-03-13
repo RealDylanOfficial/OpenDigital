@@ -55,11 +55,11 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-8 order-xl-1" >
-          <div class ="card bg-secondary shadow" >
-            <div class="card-header bg-white border-0">
-              <div class="row align-items-center">
-                <div class="col-8" >
+        <div class="col-xl-8 order-xl-1"  >
+          <div class ="card bg-secondary shadow" style = "color: black;" >
+            <div class="card-header bg-white border-0"  >
+              <div class="row align-items-center" >
+                <div class="col-8"  >
                   <h3 class="mb-0" >My Account</h3>
                 </div>
 
@@ -71,10 +71,10 @@
 
 			<!-- card -->
 
-            <div class="card-body"  > 
+            <div class="card-body"  style = "background-color: #e0e0e0;"> 
               <form method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
-                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <h6 class="heading-small text-muted mb-4"></h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
@@ -150,7 +150,7 @@
                 <!-- Description -->
 
 
-                <h6 class="heading-small text-muted mb-4">About me</h6>
+                <h6 class="heading-small text-muted mb-4"></h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label style = "position: relative; margin-bottom: 8px; font-size: 17px;">About Me</label>
