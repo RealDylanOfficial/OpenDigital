@@ -35,9 +35,9 @@
             {{-- search bar --}}
             <form action="/posts" method="get">
                 <input
-                class="border-2 border-gray-300 bg-white h-10 pl-3 pr-10 rounded-lg text-sm focus:outline-none"
+                class="relative border-2 border-gray-300 bg-white mt-3 h-10 pl-3 pr-10 rounded-lg text-sm focus:outline-none"
                 type="search" name="search" placeholder="Search">
-            <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
+            <button type="submit" class="absolute right-0 top-3 mt-3 mr-2">
                 <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                      version="1.1" id="Capa_1" x="0px" y="0px"
                      viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"

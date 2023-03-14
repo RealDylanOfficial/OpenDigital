@@ -21,6 +21,9 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Models\Tag');
     }
+    public function comment(){
+        return $this->hasMany('App\Models\Comment');
+    }
 
     protected static function boot()
     {
