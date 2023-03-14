@@ -171,7 +171,7 @@
             <img class="rounded-full object-cover h-16 w-16"
             src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
             <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
-        </a>
+        </a>        
         <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
 
         @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))

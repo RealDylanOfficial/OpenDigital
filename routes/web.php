@@ -52,5 +52,8 @@ Route::controller(SampleController::class)->group(function(){
 
 Route::resource('profile', ProfileController::class);
 
-// Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile');
-// Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->name('profileupdate');
+Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile');
+Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->name('profileupdate');
+
+
+Route::post('/posts/{id}',[PostsController::class,'flag'])->name('flagPost');

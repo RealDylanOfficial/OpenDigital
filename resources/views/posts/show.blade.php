@@ -18,6 +18,14 @@
                 src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
                 <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
             </a>
+
+            <form method="POST" action="{{ route('flagPost', $post->id) }}">
+                @csrf
+            <button type="submit">
+                Flag
+            </button>
+            
+            </form>
             <h1 class="text-2xl">{{$post->title}}</h1>
             <p>{{$post->description}}</p>
            

@@ -32,8 +32,8 @@ class SampleController extends Controller
     function validate_registration(Request $request)
     {
         $request->validate([
-            'username'         =>   'required|unique:users,username',
-            'email'        =>   'required|email:filter|unique:users,email',
+            'username' => array('required', 'min:4', 'unique:users,username', 'string', 'regex:/\w*$/', 'max:255'),
+            'email'        =>   'required|email:filter|unique:users,email|max:255',
             'password'     =>   'required|min:6'
         ]);
 

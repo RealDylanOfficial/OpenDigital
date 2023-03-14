@@ -10,9 +10,8 @@ use App\models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\File;
 use App\Http\Controllers\SampleController;
-use Illuminate\Support\Facades\File as Files;
+use Illuminate\Support\Facades\File;
 use Illuminate\Routing\Controllers\Middleware;
 
 class PostsController extends Controller
@@ -153,7 +152,7 @@ class PostsController extends Controller
         //
         //return $request;
         Validator::extend('not_banned_word', function ($attribute, $value, $parameters, $validator) {
-            $bannedWords = Files::get(resource_path("banned_words.txt"));
+            $bannedWords = File::get(resource_path("banned_words.txt"));
             $bannedWords = explode(PHP_EOL, $bannedWords);
         
             foreach ($bannedWords as $word) {
@@ -274,6 +273,29 @@ class PostsController extends Controller
     }
 
     /**
+     * Flag the post for moderation
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function flag($id)
+    {
+        $post = Post::find($id);
+
+        if ($post->user_id == Auth::user()->id){
+            return redirect()->back()->with("success", "cannot flag your own posts");
+        }
+
+        elseif ($post->flag != 1){
+            $post->flag = 1;
+            $post->save();
+            return redirect()->back()->with("success", "post has been flagged");
+        }
+        return redirect()->back()->with("success", "post has been flagged");
+        
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -309,11 +331,34 @@ class PostsController extends Controller
         $query->where("id", $id);
         $post = $query->first();
         if (Auth::check()) {
-            if (Auth::user()->id == $post->user_id){
+
+            if ((Auth::user()->username == "admin")){
+                $mainFilename = $post->id;
+                $ext = $post->file_ext;
                 $post->delete();
+
+                // deletes file from storage
+                File::delete("content/", $mainFilename.".".$ext);
+
+                return redirect()->back()->with("sucess", "post removed successfully");
             }
-            return redirect("/profile")->with("success", "post deleted successfully");
+
+            if ((Auth::user()->id == $post->user_id)){
+                $mainFilename = $post->id;
+                $ext = $post->file_ext;
+                $post->delete();
+                $filepath = 'content/'.$mainFilename.$ext;
+                // deletes file from storage
+                unlink($filepath);
+                
+                return redirect("/profile")->with("success", "post deleted successfully");
+            }
+            
+            
+
         }
+
+
         
         
     }
