@@ -9,7 +9,7 @@ class Flag extends Model
 {
     use HasFactory;
     protected $table = "flags";
-    
+    protected $fillable = ['user_id', 'post_id', 'reason'];
     public $primaryKey = "id";
 
     public $timestamps = true;

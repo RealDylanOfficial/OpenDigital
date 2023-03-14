@@ -282,7 +282,7 @@ class PostsController extends Controller
     public function flag(Request $request ,$id)
     {
         $request->validate([
-            'reason' => array('required', 'min:4', 'string', 'max:255'),
+            'reason' => array('nullable', 'min:4', 'string', 'max:255'),
         ]);
 
         $data = $request->all();
