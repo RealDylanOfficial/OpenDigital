@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('post_id')->references('id')->on('posts');
             $table->text("reason")->nullable();
             $table->timestamps();
+            $table->unique(['user_id','post_id']);
         });
     }
 

@@ -289,12 +289,20 @@ class PostsController extends Controller
 
         $post = Post::find($id);
 
-        Flag::create([
-            'user_id' =>  Auth::user()->id,
-            'post_id' => $post->id,
-            'reason' => $data['reason'],
-            'created_at' => Carbon::now()
-        ]);
+        // database has unique combination of user_id and post_id constraint
+        // catch sqlstate error and return
+        try {
+            Flag::create([
+                'user_id' =>  Auth::user()->id,
+                'post_id' => $post->id,
+                'reason' => $data['reason'],
+                'created_at' => Carbon::now()
+            ]);
+          
+          } catch (\Illuminate\Database\QueryException $e) {
+            redirect()->back()->with("success", "cannot flag same post several times");
+          }
+        
        
         return redirect()->back()->with("success", "post has been flagged");
         
