@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flag;
 use Validator;
 use Carbon\Carbon;
 use App\Models\Tag;
@@ -278,20 +279,37 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function flag($id)
+    public function flag(Request $request ,$id)
+    {
+        $request->validate([
+            'reason' => array('required', 'min:4', 'string', 'max:255'),
+        ]);
+
+        $data = $request->all();
+
+        $post = Post::find($id);
+
+        Flag::create([
+            'user_id' =>  Auth::user()->id,
+            'post_id' => $post->id,
+            'reason' => $data['reason'],
+            'created_at' => Carbon::now()
+        ]);
+       
+        return redirect()->back()->with("success", "post has been flagged");
+        
+    }
+
+    public function like($id)
     {
         $post = Post::find($id);
 
         if ($post->user_id == Auth::user()->id){
-            return redirect()->back()->with("success", "cannot flag your own posts");
+            return redirect()->back()->with("success", "cannot like your own posts");
         }
-
-        elseif ($post->flag != 1){
-            $post->flag = 1;
-            $post->save();
-            return redirect()->back()->with("success", "post has been flagged");
-        }
-        return redirect()->back()->with("success", "post has been flagged");
+        $post->likes++;
+        $post->save();    
+        return redirect()->back();
         
     }
 
