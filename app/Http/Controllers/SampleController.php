@@ -14,7 +14,7 @@ class SampleController extends Controller
     public static function checkUser($page, $redirect = 'login'){
         if(Auth::check())
         {
-            return view($page);
+            return redirect($page);
         }
 
         return redirect($redirect)->with('error', 'you are not allowed to access');
@@ -67,8 +67,9 @@ class SampleController extends Controller
 
     function home()
     {
-        return SampleController::checkUser('home');
+        return SampleController::checkUser('posts');
     }
+    
 
     
 
