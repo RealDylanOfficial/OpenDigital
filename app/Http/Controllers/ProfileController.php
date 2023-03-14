@@ -38,12 +38,13 @@ class ProfileController extends Controller
         $query->where("user_id", $user->id);
         $query->orderBy("created_at", "desc");
         $posts = $query->paginate(5);
-        if ($user == Auth::user()) {
-            return view("profile")->with("user", $user)->with("auth", true)->with("posts", $posts);
-        }
-        else{
+        if (Auth::check() == false) {
             return view("profile")->with("user", $user)->with("auth", false)->with("posts", $posts);
         }
+        else if (($user == Auth::user()) || Auth::user()->username == "admin") {
+            return view("profile")->with("user", $user)->with("auth", true)->with("posts", $posts);
+        }
+
         
     }
     
