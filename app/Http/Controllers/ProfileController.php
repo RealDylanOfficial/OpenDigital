@@ -51,7 +51,7 @@ class ProfileController extends Controller
         //validation rules
 
         $request->validate([
-            'username' => array('nullable', 'min:4', 'unique:users,username', 'string', 'regex:/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/', 'max:255'),
+            'username' => array('nullable', 'min:4', 'unique:users,username', 'string', 'regex:/\w*$/', 'max:255'),
             'email'=>'nullable|unique:users,email|email:filter|max:255',
             'profile_description'=>'nullable|string|max:10000',
             'file'=> 'max:10000'

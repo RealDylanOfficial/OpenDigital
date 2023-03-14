@@ -275,12 +275,17 @@ class PostsController extends Controller
     public function flag($id)
     {
         $post = Post::find($id);
-        if ($post->flag != 1){
+
+        if ($post->user_id == Auth::user()->id){
+            return redirect()->back()->with("success", "cannot flag your own posts");
+        }
+
+        elseif ($post->flag != 1){
             $post->flag = 1;
             $post->save();
             return redirect()->back()->with("success", "post has been flagged");
         }
-        return redirect()->back()->with("success", "post already flagged");
+        return redirect()->back()->with("success", "post has been flagged");
         
     }
 
@@ -329,7 +334,7 @@ class PostsController extends Controller
                 // deletes file from storage
                 File::delete("content/", $mainFilename.".".$ext);
 
-                return redirect("/home")->with("sucess", "post removed successfully");
+                return redirect()->back()->with("sucess", "post removed successfully");
             }
 
             if ((Auth::user()->id == $post->user_id)){

@@ -13,11 +13,11 @@
 </head>
 
 @include('inc.navbar')
-
+@include('inc.messages')
 
 
 <body>
-    @include('inc.messages')
+    
     <!-- Page content -->
     <div class="container-fluid mt--7">
       <div class="row">
