@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Http\Controllers\SampleController;
 use Illuminate\Http\Request;
 use App\models\Comment;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controllers\Middleware;
 
 class CommentsController extends Controller
@@ -16,7 +18,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**

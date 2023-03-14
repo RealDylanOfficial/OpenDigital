@@ -46,9 +46,7 @@
                 <button class="btn btn-primary mt-2" style="background-color: #007bff; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;" type="submit">Comment</button>
             </form>
             @foreach ($comments as $comment)
-            @if (in_array($comment->post_id, [$posts->id]))
-            <h1>a</h1>
-            @endif
+            <h1>{{$comment->content}}</h1>
             @endforeach
         </div>
     </div>

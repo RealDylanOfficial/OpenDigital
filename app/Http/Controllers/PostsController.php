@@ -6,6 +6,7 @@ use Validator;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Post;
+use App\models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -264,7 +265,12 @@ class PostsController extends Controller
         if ($post == null) {
             abort("404");
         }
-        return view('posts.show')->with('post', $post);
+
+        $query = Comment::query();
+        $query->where('post_id', $id);
+        $comments = $query->get();
+
+        return view('posts.show')->with('post', $post)->with('comments', $comments);
     }
 
     /**
