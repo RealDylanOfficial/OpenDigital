@@ -388,8 +388,27 @@ class PostsController extends Controller
 
         }
 
+        
+        
+        
+    }
+    public function flagged(){
+        if (Auth::check() == false) {
+            abort("404");
+        }
 
+        if (Auth::user()->username == "admin") {
+            $flags = Flag::all();
+
+
+
+            return view("flagged")->with("flags", $flags);
+        }
+        else{
+            abort("404");
+        }
         
-        
+
+
     }
 }
