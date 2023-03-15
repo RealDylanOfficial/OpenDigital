@@ -275,7 +275,7 @@ class PostsController extends Controller
 
     /**
      * Flag the post for moderation
-     *
+     * @param  Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -289,6 +289,10 @@ class PostsController extends Controller
 
         $post = Post::find($id);
 
+        if (Auth::user()==null){
+            return redirect()->back()->with("error", "must log in to flag a post"); 
+        }
+
         // database has unique combination of user_id and post_id constraint
         // catch sqlstate error and return
         try {
@@ -300,7 +304,7 @@ class PostsController extends Controller
             ]);
           
           } catch (\Illuminate\Database\QueryException $e) {
-            redirect()->back()->with("success", "cannot flag same post several times");
+            return redirect()->back()->with("error", "cannot flag same post several times");
           }
         
        
@@ -313,7 +317,7 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         if ($post->user_id == Auth::user()->id){
-            return redirect()->back()->with("success", "cannot like your own posts");
+            return redirect()->back()->with("error", "cannot like your own posts");
         }
         $post->likes++;
         $post->save();    

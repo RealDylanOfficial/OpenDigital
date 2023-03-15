@@ -67,7 +67,7 @@ class SampleController extends Controller
 
     function home()
     {
-        return SampleController::checkUser('posts');
+        return redirect('posts');
     }
     
 
