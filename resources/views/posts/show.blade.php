@@ -34,6 +34,10 @@
             </button>    
             </form> -->
 
+            <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
+                <button class="btn btn-primary">Download</button>
+            </a>
+
             <!-- Button trigger modal -->
 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
