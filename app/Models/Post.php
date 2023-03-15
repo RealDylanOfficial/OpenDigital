@@ -24,6 +24,9 @@ class Post extends Model
     public function comment(){
         return $this->hasMany('App\Models\Comment');
     }
+    public function flags(){
+        return $this->hasMany('App\Models\Flag');
+    }
 
     protected static function boot()
     {
@@ -31,6 +34,8 @@ class Post extends Model
 
         static::deleting(function ($post) {
             $post->tags()->detach();
+            $post->comment()->delete();
+            $post->flags()->delete();
         });
     }
 }
