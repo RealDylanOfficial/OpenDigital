@@ -109,19 +109,19 @@ class DatabaseSeeder extends Seeder
             ->has(Post::factory()->count(20)->sequence(["file_ext" => ".ogg", "content_type" => "audio"],["file_ext" => ".mp4", "content_type" => "video"],["file_ext" => ".pdf", "content_type" => "pdf"])->has(Tag::factory()->sequence(["tag" => "testTag1"], ["tag" => "testTag2"], ["tag" => "testTag3"])))->create();
        
         DB::table('comments')->insert([
-            "user_id" => 2,
+            "user_id" => 3,
             "post_id" => 1,
             "likes" => 12,
             "content" => "woah",
         ]);
         DB::table('comments')->insert([
-            "user_id" => 2,
+            "user_id" => 1,
             "post_id" => 1,
             "likes" => 43,
             "content" => "it's such a pretty bird!!",
         ]);
         DB::table('comments')->insert([
-            "user_id" => 3,
+            "user_id" => 2,
             "post_id" => 3,
             "likes" => 2,
             "content" => "I agree!",

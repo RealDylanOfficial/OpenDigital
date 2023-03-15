@@ -96,10 +96,17 @@
                  @csrf
                 <label class="mt-4 text-xl">Comments</label>
                 <textarea class="form-control resize-none h-24" id="commentInput" placeholder="Add a Comment..." name="comment" maxlength="500"></textarea>   
-                <button class="btn btn-primary mt-2" style="background-color: #007bff; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;" type="submit">Comment</button>
+                <button class="btn btn-primary mt-2 mb-3" style="background-color: #007bff; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;" type="submit">Comment</button>
             </form>
             @foreach ($comments as $comment)
-            <h1>{{$comment->content}}</h1>
+            <div class="card card-body bg-light mb-2">
+                <a href="/profile/{{$comment->user->id}}" class="flex h-20 border-b">
+                    <img class="rounded-full object-cover h-16 w-16"
+                    src="{{ url('images/profile_pictures/'.$comment->user->id.'.'.$comment->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
+                    <h2 class="mt-4 ml-2">{{$comment->user->username}}</h2>
+                </a>
+                <h1>{{$comment->content}}</h1>
+            </div>
             @endforeach
         </div>
     </div>
