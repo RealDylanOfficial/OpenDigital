@@ -58,4 +58,6 @@ Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->
 
 Route::post('/posts/{id}',[PostsController::class,'flag'])->name('flagPost');
 
-Route::get('/flagged', 'PostsController@flagged');
+Route::get('/flagged', [PostsController::class,'flagged']);
+
+Route::post('/increment-download-count', [PostsController::class,'incrementDownload']);

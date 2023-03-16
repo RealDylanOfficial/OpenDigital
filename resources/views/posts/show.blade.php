@@ -3,6 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="_token" content="{{ csrf_token() }}">
+    <meta name="_postID" content="{{ $post->id }}">
+    <meta name="_postExt" content="{{ $post->file_ext }}">
+    <meta name="_postTitle" content="{{ $post->title }}">
     <link rel="icon" href="{{asset("images/logo.png")}}">
     <title>OpenDigital - {{$post->title}}</title>
    
@@ -10,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     @viteReactRefresh
-    @vite(["resources/sass/app.scss"])
+    @vite(["resources/sass/app.scss", "resources/js/showPosts.ts"])
 </head>
 <body>
     @include('inc.navbar')
@@ -34,9 +38,11 @@
             </button>    
             </form> -->
 
-            <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
+            {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
                 <button class="btn btn-primary">Download</button>
-            </a>
+            </a> --}}
+            <button id="download-btn">Download</button>
+
 
             <!-- Button trigger modal -->
 

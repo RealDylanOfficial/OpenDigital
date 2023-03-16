@@ -411,4 +411,11 @@ class PostsController extends Controller
 
 
     }
+
+    public function incrementDownload(Request $request){
+        $query = Post::query();
+        $query->where("id", $request->post_id);
+        $query->increment("download_count");
+        return response()->json(['success' => true]);
+    }
 }
