@@ -28,6 +28,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        DB::table('users')->insert([
+            'username' => "admin",
+            'email' => Str::random(10).'@gmail.com',
+            'password' => Hash::make('j38*J_)dj@}dksaS&eE9'),
+            'created_at' => Carbon::now(),
+            'pfp_file_extension' => "jpg"
+        ]);
         
         DB::table('users')->insert([
             'username' => Str::random(10),
@@ -38,7 +46,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('posts')->insert([
-            'user_id' => 1,
+            'user_id' => 2,
             "title" => "bird wow",
             "download_count" => 12,
             "likes" => 1456,
@@ -49,7 +57,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('posts')->insert([
-            'user_id' => 1,
+            'user_id' => 2,
             "title" => "Blood, toil, tears and sweat",
             "download_count" => 78,
             "likes" => 32,
@@ -113,7 +121,7 @@ class DatabaseSeeder extends Seeder
             "content" => "it's such a pretty bird!!",
         ]);
         DB::table('comments')->insert([
-            "user_id" => 1,
+            "user_id" => 3,
             "post_id" => 3,
             "likes" => 2,
             "content" => "I agree!",

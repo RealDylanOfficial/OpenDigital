@@ -178,9 +178,7 @@
           src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
           <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
         </a>
-        @if (Auth::user()==null) 
-
-        @elseif ($auth == true || (Auth::user()->username == "admin"))
+        @if ($auth == true)
         <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
           @csrf
           @method('DELETE')

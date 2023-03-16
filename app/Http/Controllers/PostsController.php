@@ -368,9 +368,9 @@ class PostsController extends Controller
                 $post->delete();
 
                 // deletes file from storage
-                File::delete("content/", $mainFilename.".".$ext);
-
-                return redirect()->back()->with("sucess", "post removed successfully");
+                $path = public_path("content\\" . $mainFilename . $ext);
+                File::delete($path);
+                return redirect()->back()->with("success", "post removed successfully");
             }
 
             if ((Auth::user()->id == $post->user_id)){
@@ -398,7 +398,8 @@ class PostsController extends Controller
         }
 
         if (Auth::user()->username == "admin") {
-            $flags = Flag::all();
+            $query = Flag::query();
+            $flags = $query->paginate(5);
 
 
 
