@@ -1,0 +1,137 @@
+ //like button
+
+ .like__btn {
+    border: none;
+    background-color: #e74c3c;
+    color: white;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    max-width: 200px;
+    transition: all ease 0.3s;
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 700px;
+    top: 70px;
+   
+
+    &:hover {
+        background-color: rgba(#f71900, 0.8);
+    }
+
+    &:disabled {
+        background-color: #d4cfcf;
+        cursor: pointer;
+    }  
+  }
+
+  .like__icon {
+      font-size: 1.2rem;
+      margin-right: 0.3rem;
+  }
+
+  .like__number {
+      font-size: 0.8rem;
+      margin-left: 2px;
+  }
+
+  .container12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+  }
+
+  //download button
+
+  .download__btn {
+    border: none;
+    background-color: #258fd6;
+    color: white;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    max-width: 200px;
+    transition: all ease 0.3s;
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 600px;
+    top: 5px;
+
+    
+
+    &:hover {
+        background-color: rgba(#0206e9, 0.8);
+    }
+
+    &:disabled {
+        background-color: #d4cfcf;
+        cursor: pointer;
+    }  
+  }
+
+  .download__icon {
+      font-size: 1.2rem;
+      margin-right: 0.3rem;
+  }
+
+  .download__number {
+      font-size: 0.8rem;
+      margin-left: 5px;
+  }
+
+  .container123 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  //flag button
+
+  .flag__btn {
+    border: none;
+    background-color: #b0b3b4;
+    color: white;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    max-width: 200px;
+    transition: all ease 0.3s;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    width: 40px;
+    position: relative;
+    right: 505px;
+    bottom: 49px;
+
+    &:hover {
+        background-color: rgba(#f10707f5, 0.8);
+    }
+
+    &:disabled {
+        background-color: #cfcfd4;
+        cursor: pointer;
+    }  
+  }
+
+  .flag__icon {
+      font-size: 1.2rem;
+      margin-right: 0.3rem;
+      
+  }
+
+  .container1234 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+  }
