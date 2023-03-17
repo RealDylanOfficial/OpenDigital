@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{{asset("images/logo.png")}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>OpenDigital - Posts</title>
 
     @viteReactRefresh
@@ -171,7 +172,21 @@
             <img class="rounded-full object-cover h-16 w-16"
             src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
             <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
-        </a>        
+
+            <!-- LIKE BUTTON -->
+
+            <div class="container12">
+                <button class="like__btn animated">
+                    <i class="like__icon fa fa-heart"></i>
+                    <span class="like__number">0</span>
+                </button>
+            </div>
+        
+
+        </a>
+        
+      
+
         <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
 
         @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
