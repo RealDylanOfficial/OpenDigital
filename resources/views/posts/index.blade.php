@@ -191,6 +191,13 @@
                 </button>
             </div>
 
+            <!-- FLAG BUTTON -->
+            <div class="container1234">
+                <button class="flag__btn">
+                <i class="fa-solid fa-flag"></i>
+                </button>
+            </div>
+
         </a>
         
       

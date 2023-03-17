@@ -83,7 +83,7 @@
     align-items: center;
 
     &:hover {
-        background-color: rgba(#e74c3c, 0.8);
+        background-color: rgba(#f71900, 0.8);
     }
 
     &:disabled {
@@ -108,13 +108,14 @@
     align-items: center;
     margin-bottom: 10px;
     margin-left: 450px;
+    margin-right: 5px;
   }
 
   //download button
 
   .download__btn {
     border: none;
-    background-color: #8d8989;
+    background-color: #258fd6;
     color: white;
     cursor: pointer;
     padding: 0.8rem;
@@ -125,7 +126,7 @@
     align-items: center;
 
     &:hover {
-        background-color: rgba(#6466da, 0.8);
+        background-color: rgba(#0206e9, 0.8);
     }
 
     &:disabled {
@@ -150,4 +151,47 @@
     align-items: center;
     margin-bottom: 10px;
     margin-left: 20px;
+    margin-right: 5px;
+  }
+
+  //flag button
+
+  .flag__btn {
+    border: none;
+    background-color: #b0b3b4;
+    color: white;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    max-width: 200px;
+    transition: all ease 0.3s;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    width: 40px;
+
+    &:hover {
+        background-color: rgba(#f10707f5, 0.8);
+    }
+
+    &:disabled {
+        background-color: #cfcfd4;
+        cursor: pointer;
+    }  
+  }
+
+  .flag__icon {
+      font-size: 1.2rem;
+      margin-right: 0.3rem;
+      
+  }
+
+  .container1234 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
   }
