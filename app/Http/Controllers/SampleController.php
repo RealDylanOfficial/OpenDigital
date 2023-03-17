@@ -14,7 +14,7 @@ class SampleController extends Controller
     public static function checkUser($page, $redirect = 'login'){
         if(Auth::check())
         {
-            return redirect($page);
+            return view($page);
         }
 
         return redirect($redirect)->with('error', 'you are not allowed to access');
@@ -32,7 +32,7 @@ class SampleController extends Controller
     function validate_registration(Request $request)
     {
         $request->validate([
-            'username' => array('required', 'min:4', 'unique:users,username', 'string', 'regex:/\w*$/', 'max:255'),
+            'username' => array('required', 'min:4', 'unique:users,username', 'string', 'regex:/\w*$/', 'max:255', 'different:admin'),
             'email'        =>   'required|email:filter|unique:users,email|max:255',
             'password'     =>   'required|min:6'
         ]);
@@ -67,7 +67,7 @@ class SampleController extends Controller
 
     function home()
     {
-        return SampleController::checkUser('posts');
+        return redirect('posts');
     }
     
 
