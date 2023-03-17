@@ -68,7 +68,7 @@
     font-size: 0.9rem;
   }
 
-  //buttons
+  //like button
 
   .like__btn {
     border: none;
@@ -95,21 +95,59 @@
   .like__icon {
       font-size: 1.2rem;
       margin-right: 0.3rem;
-      
   }
 
   .like__number {
       font-size: 0.8rem;
+      margin-left: 2px;
   }
 
   .container12 {
-
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-    margin-left: 500px;
+    margin-left: 450px;
   }
 
+  //download button
 
-  
+  .download__btn {
+    border: none;
+    background-color: #8d8989;
+    color: white;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    max-width: 200px;
+    transition: all ease 0.3s;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background-color: rgba(#6466da, 0.8);
+    }
+
+    &:disabled {
+        background-color: #d4cfcf;
+        cursor: pointer;
+    }  
+  }
+
+  .download__icon {
+      font-size: 1.2rem;
+      margin-right: 0.3rem;
+  }
+
+  .download__number {
+      font-size: 0.8rem;
+      margin-left: 5px;
+  }
+
+  .container123 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }

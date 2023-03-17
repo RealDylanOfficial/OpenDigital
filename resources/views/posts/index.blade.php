@@ -182,6 +182,14 @@
                 </button>
             </div>
         
+            <!-- DOWNLOAD BUTTON -->
+
+            <div class="container123">
+                <button class="download__btn">
+                <i class="fa-solid fa-download"></i>
+                    <span class="download__number">0</span>
+                </button>
+            </div>
 
         </a>
         
