@@ -175,27 +175,66 @@
 
             <!-- LIKE BUTTON -->
 
-            <div class="container12">
-                <button class="like__btn animated">
+            <<div class="container12">
+            <form action="{{ route('likePost', $post->id) }}" method="post">
+                @csrf
+                <button class="like__btn animated" type="submit">
                     <i class="like__icon fa fa-heart"></i>
-                    <span class="like__number">0</span>
+                    <span class="like__number">{{ $post->likes }}</span>
                 </button>
+            </form>
             </div>
-        
+
             <!-- DOWNLOAD BUTTON -->
 
-            <div class="container123">
-                <button class="download__btn">
+            <<div class="container123">
+                {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
+                </a> --}}
+                <button class="download__btn" id="download-btn">
                 <i class="fa-solid fa-download"></i>
-                    <span class="download__number">0</span>
+                    <span class="download__number">{{ $post->download_count }}</span>
                 </button>
             </div>
 
             <!-- FLAG BUTTON -->
             <div class="container1234">
-                <button class="flag__btn">
+                
+                <button class="flag__btn" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa-solid fa-flag"></i>
                 </button>
+            </div> 
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Flag user post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                <form action="{{ route('flagPost', $post->id) }}" method="post">
+					@csrf
+					<div class="form-group mb-3">
+						<input type="text" name="reason" class="form-control" placeholder="Reason for flagging (optional)" />
+						@if($errors->has('reason'))
+							<span class="text-danger">{{ $errors->first('reason') }}</span>
+						@endif
+					</div>
+					<div class="d-grid mx-auto">
+						<button type="submit" class="btn btn-dark btn-block auth-button">Flag Post</button>
+					</div>
+				</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
             </div>
 
         </a>

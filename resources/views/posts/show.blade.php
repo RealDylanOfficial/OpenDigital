@@ -42,13 +42,9 @@
 
              
 
-            {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
-                <button class="btn btn-primary">Download</button>
-            
- 
-
+            <!-- {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
             </a> --}}
-            <button id="download-btn">Download</button>
+            <button id="download-btn">Download</button> -->
 
            
             
@@ -58,31 +54,37 @@
 
             <!-- Button trigger modal -->
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Flag Post
-            </button>
+            </button> -->
 
              <!-- LIKE BUTTON -->
 
             <div class="container12">
-                <button class="like__btn animated">
+            <form action="{{ route('likePost', $post->id) }}" method="post">
+                @csrf
+                <button class="like__btn animated" type="submit">
                     <i class="like__icon fa fa-heart"></i>
-                    <span class="like__number">0</span>
+                    <span class="like__number">{{ $post->likes }}</span>
                 </button>
+            </form>
             </div>
             <!-- DOWNLOAD BUTTON -->
 
             <div class="container123">
-                <button class="download__btn">
+                {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
+                </a> --}}
+                <button class="download__btn" id="download-btn">
                 <i class="fa-solid fa-download"></i>
-                    <span class="download__number">0</span>
+                    <span class="download__number">{{ $post->download_count }}</span>
                 </button>
             </div>
               
         
             <!-- FLAG BUTTON -->
             <div class="container1234">
-                <button class="flag__btn">
+                
+                <button class="flag__btn" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa-solid fa-flag"></i>
                 </button>
             </div> 
