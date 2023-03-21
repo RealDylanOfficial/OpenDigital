@@ -102,12 +102,15 @@
                 
             @endif
             <small>Posted at: {{$post->created_at}}</small>
-            <form action={{ route('comments.store') }} method="comment" enctype="multipart/form-data">    
+            
+            <form action={{ route('comments.store') }} method="post" enctype="multipart/form-data">    
                  @csrf
                 <label class="mt-4 text-xl">Comments</label>
-                <textarea class="form-control resize-none h-24" id="commentInput" placeholder="Add a Comment..." name="comment" maxlength="500"></textarea>   
+                <textarea class="form-control resize-none h-24" id="commentInput" placeholder="Add a Comment..." name="content" maxlength="500"></textarea>   
                 <button class="btn btn-primary mt-2 mb-3" style="background-color: #007bff; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;" type="submit">Comment</button>
+                <input type="hidden" value="{{$post->id}}" name="postID" id="postIDInput">
             </form>
+            
             @foreach ($comments as $comment)
             <div class="card card-body bg-light mb-2">
                 <a href="/profile/{{$comment->user->id}}" class="flex h-20 border-b">
