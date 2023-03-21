@@ -121,21 +121,18 @@ class DatabaseSeeder extends Seeder
         
 
         DB::table('comments')->insert([
-            "user_id" => 2,
+            "user_id" => 3,
             "post_id" => 1,
-            "likes" => 12,
             "content" => "woah",
         ]);
         DB::table('comments')->insert([
-            "user_id" => 2,
+            "user_id" => 1,
             "post_id" => 1,
-            "likes" => 43,
             "content" => "it's such a pretty bird!!",
         ]);
         DB::table('comments')->insert([
-            "user_id" => 3,
+            "user_id" => 2,
             "post_id" => 3,
-            "likes" => 2,
             "content" => "I agree!",
         ]);
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\SampleController;
 use Illuminate\Http\Request;
 use App\models\Comment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Routing\Controllers\Middleware;
 
 class CommentsController extends Controller
@@ -39,32 +40,33 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::extend('not_banned_word', function ($attribute, $value, $parameters, $validator) {
-            $bannedWords = Files::get(resource_path("banned_words.txt"));
-            $bannedWords = explode(PHP_EOL, $bannedWords);
+        //Validator::extend('not_banned_word', function ($attribute, $value, $parameters, $validator) {
+        //    $bannedWords = Files::get(resource_path("banned_words.txt"));
+        //    $bannedWords = explode(PHP_EOL, $bannedWords);
         
-            foreach ($bannedWords as $word) {
-                if (stripos($value, $word) !== false) {
-                    return false;
-                }
-            }
+        //    foreach ($bannedWords as $word) {
+        //        if (stripos($value, $word) !== false) {
+        //            return false;
+        //        }
+        //    }
         
-            return true;
-        });
+        //    return true;
+        //});
         
-        $this->validate($request, [
-            "comment" => "required|max:500|not_banned_word",
-        ]);
+        //$this->validate($request, [
+        //    "content" => "required|max:500|not_banned_word",
+        //]);
+
+        $data = $request->all();
 
         $comment = new Comment;
-        $comment->content = $request->input("comment");
-        $comment->likes = 0;
+        $comment->content = $request->input("content");
         $comment->user_id = Auth::user()->id;
-        $comment->post_id = Auth::post()->id;
+        $comment->post_id = $data['postID'];
 
         $comment->save();
 
-        return redirect("/posts/{{$comment->post_id}}")->with("success", "Comment added");
+        return redirect('/posts');
     }
 
     /**
