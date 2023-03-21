@@ -193,14 +193,14 @@
 
             <!-- DOWNLOAD BUTTON -->
 
-            <div class="container123">
+            <!-- <div class="container123">
                 {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
                 </a> --}}
                 <button class="download__btn" id="download-btn">
                 <i class="fa-solid fa-download"></i>
                     <span class="download__number">{{ $post->download_count }}</span>
                 </button>
-            </div>
+            </div> -->
 
             <!-- FLAG BUTTON -->
             <div class="container1234">
