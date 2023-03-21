@@ -20,7 +20,6 @@ class PostFactory extends Factory
             //
             "title" => fake()->words(3, true),
             "download_count" => fake()->numberBetween(0, 100000),
-            "likes" => fake()->numberBetween(0, 100000),
             "file_ext" => "",
             "content_type" => "",
             "description" => fake()->words(50, true)

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string("title");
             $table->unsignedInteger("download_count");
-            $table->unsignedInteger("likes");
             //$table->string("filepath");
             $table->string("file_ext", 32);     //file extension or similar, denoting the type of content the browser needs to render
             $table->string("content_type", 32);
@@ -37,8 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('posts');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 };

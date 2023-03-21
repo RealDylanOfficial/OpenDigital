@@ -21,6 +21,10 @@ class ProfileController extends Controller
             $query->where("user_id", Auth::user()->id);
             $query->orderBy("created_at", "desc");
             $posts = $query->paginate(5);
+            foreach ($posts as $post) {
+                $post->likes = $post->likes()->count();
+                
+            }
             return view('profile')->with("user", Auth::user())->with("auth", true)->with("posts", $posts);
         }
         else{
@@ -38,6 +42,10 @@ class ProfileController extends Controller
         $query->where("user_id", $user->id);
         $query->orderBy("created_at", "desc");
         $posts = $query->paginate(5);
+        foreach ($posts as $post) {
+            $post->likes = $post->likes()->count();
+            
+        }
         if (Auth::check() == false) {
             return view("profile")->with("user", $user)->with("auth", false)->with("posts", $posts);
         }

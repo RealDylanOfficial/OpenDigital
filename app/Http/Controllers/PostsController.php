@@ -118,7 +118,13 @@ class PostsController extends Controller
             $sortField = "created_at";
         }
 
-        $query->orderBy($sortField, "desc");
+        if ($sortField == "likes"){
+            $query->withCount('likes')->orderByDesc('likes_count');
+        }
+        else{
+            $query->orderBy($sortField, "desc");
+        }
+        
         // DB::connection()->enableQueryLog();
         $posts = $query->paginate(5);
         
@@ -126,6 +132,10 @@ class PostsController extends Controller
         // $last_query = end($queries);
         // return $queries;
         // $posts = Post::all();
+        foreach ($posts as $post) {
+            $post->likes = $post->likes()->count();
+            
+        }
         
         return view('posts.index')->with('posts', $posts);
     }
@@ -265,7 +275,10 @@ class PostsController extends Controller
         if ($post == null) {
             abort("404");
         }
-
+        
+        $post->likes = $post->likes()->count();
+            
+        
         $query = Comment::query();
         $query->where('post_id', $id);
         $comments = $query->get();

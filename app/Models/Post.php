@@ -28,6 +28,10 @@ class Post extends Model
         return $this->hasMany('App\Models\Flag');
     }
 
+    public function likes(){
+        return $this->hasMany('App\Models\Like');
+    }
+
     protected static function boot()
     {
         parent::boot();
