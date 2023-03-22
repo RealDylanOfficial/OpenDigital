@@ -80,7 +80,8 @@
     max-width: 200px;
     transition: all ease 0.3s;
     display: flex;
-    align-items: center;
+    position: relative;
+    top: 20px;
 
     &:hover {
         background-color: rgba(#f71900, 0.8);
@@ -104,55 +105,12 @@
 
   .container12 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-left: 450px;
-    margin-right: 5px;
+    margin-top: 15px;
+   
+    //margin-left: 450px;
+    //margin-right: 5px;
   }
 
-  //download button
-
-  .download__btn {
-    border: none;
-    background-color: #258fd6;
-    color: white;
-    cursor: pointer;
-    padding: 0.8rem;
-    border-radius: 0.4rem;
-    max-width: 200px;
-    transition: all ease 0.3s;
-    display: flex;
-    align-items: center;
-
-    &:hover {
-        background-color: rgba(#0206e9, 0.8);
-    }
-
-    &:disabled {
-        background-color: #d4cfcf;
-        cursor: pointer;
-    }  
-  }
-
-  .download__icon {
-      font-size: 1.2rem;
-      margin-right: 0.3rem;
-  }
-
-  .download__number {
-      font-size: 0.8rem;
-      margin-left: 5px;
-  }
-
-  .container123 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    margin-right: 5px;
-  }
 
   //flag button
 
@@ -166,7 +124,6 @@
     max-width: 200px;
     transition: all ease 0.3s;
     display: flex;
-    align-items: center;
     height: 45px;
     width: 40px;
 
@@ -188,10 +145,12 @@
 
   .container1234 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
+    position: relative;
+    margin-top: 10px;
+    left: 60px;
     margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
+    bottom: 49px;
+
+    
+   
   }
