@@ -328,8 +328,10 @@ class PostsController extends Controller
     public function like($id)
     {
         $post = Post::find($id);
-
-        if ($post->user_id == Auth::user()->id){
+        if (Auth::user() == null) {
+            return redirect()->back()->with("error", "must be logged in to like the posts");
+        }
+        else if ($post->user_id == Auth::user()->id){
             return redirect()->back()->with("error", "cannot like your own posts");
         }
         $post->likes++;

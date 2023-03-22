@@ -52,6 +52,9 @@ class ProfileController extends Controller
         else if (($user == Auth::user()) || Auth::user()->username == "admin") {
             return view("profile")->with("user", $user)->with("auth", true)->with("posts", $posts);
         }
+        else {
+            return view("profile")->with("user", $user)->with("auth", false)->with("posts", $posts);
+        }
 
         
     }

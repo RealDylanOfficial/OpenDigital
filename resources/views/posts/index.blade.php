@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="_token" content="{{ csrf_token() }}">
+
     <link rel="icon" href="{{asset("images/logo.png")}}">
     <title>OpenDigital - Posts</title>
 
@@ -15,6 +17,8 @@
 <body>
     @include('inc.navbar')
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     {{-- Gets the filters and stores them in variables --}}
     <?php
@@ -168,10 +172,81 @@
 
     <div class="card card-body bg-light mb-5">
         <a href="/profile/{{$post->user->id}}" class="flex h-20 border-b">
+        
             <img class="rounded-full object-cover h-16 w-16"
             src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
             <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
-        </a>        
+        </a>
+       
+            <!-- LIKE BUTTON -->
+
+            <div class="container12">
+            <form action="{{ route('likePost', $post->id) }}" method="post">
+                @csrf
+                <button class="like__btn animated" type="submit">
+                    <i class="like__icon fa fa-heart"></i>
+                    <span class="like__number">{{ $post->likes }}</span>
+                </button>
+            </form>
+            </div>
+
+            <!-- DOWNLOAD BUTTON -->
+
+            <!-- <div class="container123">
+                {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
+                </a> --}}
+                <button class="download__btn" id="download-btn">
+                <i class="fa-solid fa-download"></i>
+                    <span class="download__number">{{ $post->download_count }}</span>
+                </button>
+            </div> -->
+
+            <!-- FLAG BUTTON -->
+            <div class="container1234">
+                
+                <button class="flag__btn" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa-solid fa-flag"></i>
+                </button>
+            </div> 
+        
+       
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Flag user post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+            <form action="{{ route('flagPost', $post->id) }}" method="post">
+                @csrf
+                <div class="form-group mb-3">
+                    <input type="text" name="reason" class="form-control" placeholder="Reason for flagging (optional)" />
+                    @if($errors->has('reason'))
+                        <span class="text-danger">{{ $errors->first('reason') }}</span>
+                    @endif
+                </div>
+                <div class="d-grid mx-auto">
+                    <button type="submit" class="btn btn-dark btn-block auth-button">Flag Post</button>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        </a>
+        
+      
+
         <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
 
         @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))

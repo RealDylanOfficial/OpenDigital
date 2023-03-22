@@ -88,5 +88,5 @@ function submitForms(){
   let currentURL = window.location.href.split("?")[0];
   window.location.href = currentURL + "?" + $.param(getArgs);
   
-}
+};
   

@@ -30,6 +30,8 @@ Route::get('/', function () {
 //     return view('login');
 // });
 
+
+
 Route::resource('posts', PostsController::class);
 
 Route::resource('comments', CommentsController::class);
@@ -58,6 +60,9 @@ Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->
 
 Route::post('/posts/{id}',[PostsController::class,'flag'])->name('flagPost');
 
+Route::post('/posts/{id}/like',[PostsController::class,'like'])->name('likePost');
+
 Route::get('/flagged', [PostsController::class,'flagged']);
 
 Route::post('/increment-download-count', [PostsController::class,'incrementDownload']);
+

@@ -12,9 +12,11 @@
    
     <!-- having to import boostrap, couldn't get it working -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @viteReactRefresh
     @vite(["resources/sass/app.scss", "resources/js/showPosts.ts"])
+    @vite(["resources/sass/showPosts.scss"])
+
 </head>
 <body>
     @include('inc.navbar')
@@ -38,17 +40,55 @@
             </button>    
             </form> -->
 
-            {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
-                <button class="btn btn-primary">Download</button>
+             
+
+            <!-- {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
             </a> --}}
-            <button id="download-btn">Download</button>
+            <button id="download-btn">Download</button> -->
+
+           
+            
+
+
 
 
             <!-- Button trigger modal -->
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Flag Post
-            </button>
+            </button> -->
+
+             <!-- LIKE BUTTON -->
+
+            <div class="container12">
+            <form action="{{ route('likePost', $post->id) }}" method="post">
+                @csrf
+                <button class="like__btn animated" type="submit">
+                    <i class="like__icon fa fa-heart"></i>
+                    <span class="like__number">{{ $post->likes }}</span>
+                </button>
+            </form>
+            </div>
+            <!-- DOWNLOAD BUTTON -->
+
+            <div class="container123">
+                {{-- <a href="/content/{{$post->id . $post->file_ext}}" download="{{ $post->title }}">
+                </a> --}}
+                <button class="download__btn" id="download-btn">
+                <i class="fa-solid fa-download"></i>
+                    <span class="download__number">{{ $post->download_count }}</span>
+                </button>
+            </div>
+              
+        
+            <!-- FLAG BUTTON -->
+            <div class="container1234">
+                
+                <button class="flag__btn" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa-solid fa-flag"></i>
+                </button>
+            </div> 
+
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,6 +100,7 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
                 <form action="{{ route('flagPost', $post->id) }}" method="post">
 					@csrf
@@ -81,7 +122,14 @@
             </div>
             </div>
 
+            
+
+
+
+
+
             <h1 class="text-2xl">{{$post->title}}</h1>
+
             <p>{{$post->description}}</p>
            
             @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
