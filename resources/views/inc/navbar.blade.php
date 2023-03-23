@@ -19,7 +19,7 @@
                   <a class="hover:text-blue-800 text-2xl" href="/posts/?type=video">Video</a>
                 </li>
                 <li class="mr-6">
-                  <a class="hover:text-blue-800 text-2xl" href="/posts/?type=images">Images</a>
+                  <a class="hover:text-blue-800 text-2xl" href="/posts/?type=image">Images</a>
                 </li>
               </ul>
         </div>
