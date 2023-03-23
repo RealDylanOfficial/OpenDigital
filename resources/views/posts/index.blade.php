@@ -181,7 +181,7 @@
        
             <!-- LIKE BUTTON -->
 
-            <div class="container12">
+            {{-- <div class="container12">
             <form action="{{ route('likePost', $post->id) }}" method="post">
                 @csrf
                 <button class="like__btn animated" type="submit">
@@ -189,7 +189,7 @@
                     <span class="like__number">{{ $post->likes }}</span>
                 </button>
             </form>
-            </div>
+            </div> --}}
 
             <!-- DOWNLOAD BUTTON -->
 
@@ -205,7 +205,7 @@
             <!-- FLAG BUTTON -->
             <div class="container1234">
                 
-                <button class="flag__btn" data-toggle="modal" data-target="#exampleModal">
+                <button id="{{$post->id}}" class="flag__btn" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa-solid fa-flag"></i>
                 </button>
             </div> 
@@ -224,9 +224,12 @@
             </div>
 
             <div class="modal-body">
-            <form action="{{ route('flagPost', $post->id) }}" method="post">
+            <form action="{{ route('flagPost') }}" method="post">
                 @csrf
+                <input type="hidden" value="{{$post->id}}" name="postID" id="postIDInput">
+
                 <div class="form-group mb-3">
+                    
                     <input type="text" name="reason" class="form-control" placeholder="Reason for flagging (optional)" />
                     @if($errors->has('reason'))
                         <span class="text-danger">{{ $errors->first('reason') }}</span>
@@ -246,7 +249,7 @@
 
         </a>
         
-      
+        <h2>Download count: {{$post->download_count}}, Likes: {{$post->likes}}</h2>
 
         <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
 
@@ -270,7 +273,7 @@
         <small>Posted: {{$post->created_at}}</small>
 
         <a href="/posts/{{$post->id}}" class="h-5 mt-2.5 border-t">
-            <h3 class="text-center mt-2">Comments</h3>
+            <h3 class="text-center mt-2">Comments ({{$post->comment()->count()}})</h3>
         </a>
     </div>
 

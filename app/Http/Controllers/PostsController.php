@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Flag;
+use App\Models\Like;
 use Validator;
 use Carbon\Carbon;
 use App\Models\Tag;
@@ -292,15 +293,15 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function flag(Request $request ,$id)
+    public function flag(Request $request)
     {
         $request->validate([
             'reason' => array('nullable', 'min:4', 'string', 'max:255'),
         ]);
 
         $data = $request->all();
-
-        $post = Post::find($id);
+     
+        $post = Post::find($data['postID']);
 
         if (Auth::user()==null){
             return redirect()->back()->with("error", "must log in to flag a post"); 
@@ -334,9 +335,34 @@ class PostsController extends Controller
         else if ($post->user_id == Auth::user()->id){
             return redirect()->back()->with("error", "cannot like your own posts");
         }
-        $post->likes++;
-        $post->save();    
+        $like = Like::where("user_id", "=", Auth::user()->id)->where("post_id", "=", $id)->first();
+        if ($like === null){
+            $like = new Like;
+            $like->user_id = Auth::user()->id;
+            $like->post_id = $id;
+            $like->save();
+        }
+        else{
+            Like::destroy($like->id);
+        }
+        // return redirect()->back();
+        // PostsController::show($id);
+
         return redirect()->back();
+        // $post = Post::find($id);
+        // if ($post == null) {
+        //     abort("404");
+        // }
+        
+        // $post->likes = $post->likes()->count();
+            
+        
+        // $query = Comment::query();
+        // $query->where('post_id', $id);
+        // $comments = $query->get();
+
+        // return redirect('posts/'.$id)->with('post', $post)->with('comments', $comments);
+        
         
     }
 
