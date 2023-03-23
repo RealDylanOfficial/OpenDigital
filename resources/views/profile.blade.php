@@ -18,6 +18,7 @@
 
 <body>
   
+    @include('inc.messages')
     <!-- Page content -->
     <div class="container-fluid mt--7" style = "margin-top: 45px; ">
       <div class="row">
