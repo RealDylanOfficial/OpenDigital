@@ -60,7 +60,7 @@ Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->
 
 Route::post('/posts/id',[PostsController::class,'flag'])->name('flagPost');
 
-Route::post('/posts/id/like',[PostsController::class,'like'])->name('likePost');
+Route::post('/posts/{id}/like',[PostsController::class,'like'])->name('likePost');
 
 Route::get('/flagged', [PostsController::class,'flagged']);
 

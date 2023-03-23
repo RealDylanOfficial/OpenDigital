@@ -61,7 +61,7 @@
              <!-- LIKE BUTTON -->
 
             <div class="container12">
-            <form action="{{ route('likePost') }}" method="post">
+            <form action="{{ route('likePost', $post->id) }}" method="post">
                 @csrf
                 <button class="like__btn animated" type="submit">
                     <i class="like__icon fa fa-heart"></i>
