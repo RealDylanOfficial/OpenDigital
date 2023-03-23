@@ -57,6 +57,9 @@ class CommentsController extends Controller
         //    "content" => "required|max:500|not_banned_word",
         //]);
 
+        if (Auth::user() == null){
+            return redirect()->back()->with("error", "must be logged in to leave a comment");
+        }
         $data = $request->all();
 
         $comment = new Comment;
