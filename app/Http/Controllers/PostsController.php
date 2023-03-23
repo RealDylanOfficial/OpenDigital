@@ -345,7 +345,23 @@ class PostsController extends Controller
         else{
             Like::destroy($like->id);
         }
+        // return redirect()->back();
+        // PostsController::show($id);
+
         return redirect()->back();
+        // $post = Post::find($id);
+        // if ($post == null) {
+        //     abort("404");
+        // }
+        
+        // $post->likes = $post->likes()->count();
+            
+        
+        // $query = Comment::query();
+        // $query->where('post_id', $id);
+        // $comments = $query->get();
+
+        // return redirect('posts/'.$id)->with('post', $post)->with('comments', $comments);
         
         
     }
