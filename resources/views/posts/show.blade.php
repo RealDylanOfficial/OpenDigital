@@ -61,7 +61,7 @@
              <!-- LIKE BUTTON -->
 
             <div class="container12">
-            <form action="{{ route('likePost', $post->id) }}" method="post">
+            <form action="{{ route('likePost') }}" method="post">
                 @csrf
                 <button class="like__btn animated" type="submit">
                     <i class="like__icon fa fa-heart"></i>
@@ -104,6 +104,7 @@
                 <div class="modal-body">
                 <form action="{{ route('flagPost', $post->id) }}" method="post">
 					@csrf
+                    <input type="hidden" value="{{$post->id}}" name="postID" id="postIDInput">
 					<div class="form-group mb-3">
 						<input type="text" name="reason" class="form-control" placeholder="Reason for flagging (optional)" />
 						@if($errors->has('reason'))

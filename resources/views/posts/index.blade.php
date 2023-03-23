@@ -224,9 +224,12 @@
             </div>
 
             <div class="modal-body">
-            <form action="{{ route('flagPost', $post->id) }}" method="post">
+            <form action="{{ route('flagPost') }}" method="post">
                 @csrf
+                <input type="hidden" value="{{$post->id}}" name="postID" id="postIDInput">
+
                 <div class="form-group mb-3">
+                    
                     <input type="text" name="reason" class="form-control" placeholder="Reason for flagging (optional)" />
                     @if($errors->has('reason'))
                         <span class="text-danger">{{ $errors->first('reason') }}</span>
