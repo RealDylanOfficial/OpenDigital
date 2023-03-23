@@ -205,7 +205,7 @@
             <!-- FLAG BUTTON -->
             <div class="container1234">
                 
-                <button class="flag__btn" data-toggle="modal" data-target="#exampleModal">
+                <button id="{{$post->id}}" class="flag__btn" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa-solid fa-flag"></i>
                 </button>
             </div> 

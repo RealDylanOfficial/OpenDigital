@@ -1,5 +1,18 @@
 import $ from "jquery";
 
+//flag button
+function addField(id){
+  let hiddenField : HTMLInputElement = document.getElementById("postIDInput");
+  hiddenField.value = id;
+}
+
+const flagButtons: HTMLCollection = document.getElementsByClassName("flag__btn")
+for (let item of flagButtons) {
+  item.addEventListener("click", (e:Event) => addField(item.id));
+}
+
+
+
 let tags: string[] = [];
 
 (function() {
