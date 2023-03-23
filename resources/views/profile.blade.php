@@ -13,21 +13,21 @@
 </head>
 
 @include('inc.navbar')
-@include('inc.messages')
+
 
 
 <body>
-    
+  
     <!-- Page content -->
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--7" style = "margin-top: 45px; ">
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
-            <div class="row justify-content-center">
+          <div class="card card-profile shadow" style = "margin-top: 100px; margin-right: 15px; ">
+            <div class="row justify-content-center" >
               <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
+                <div class="card-profile-image" style = "margin-top: 30px; ">
                   <a href="#">
-                    <img src="{{ url('images/profile_pictures/'.$user->id.'.'.$user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" class="rounded-circle">
+                    <img src="{{ url('images/profile_pictures/'.$user->id.'.'.$user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='images/profile_pictures/default.jpg'" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -54,14 +54,15 @@
             </div>
           </div>
         </div>
-        @if($user == Auth::user())
-        <div class="col-xl-8 order-xl-1">
-          <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h3 class="mb-0">My Account</h3>
+        <div class="col-xl-8 order-xl-1"  >
+          <div class ="card bg-secondary shadow" style = "color: black;" >
+            <div class="card-header bg-white border-0"  >
+              <div class="row align-items-center" >
+                <div class="col-8"  >
+                  <h3 class="mb-0" >My Account</h3>
                 </div>
+
+
 
               </div>
             </div>
@@ -69,27 +70,27 @@
 
 			<!-- card -->
 
-            <div class="card-body"> 
+            <div class="card-body"  style = "background-color: #e0e0e0;"> 
               <form method="POST" enctype="multipart/form-data">
                 @csrf
-                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <h6 class="heading-small text-muted mb-4"></h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label">Username</label>
+                        <label class="form-control-label" style = "margin-bottom: 8px;">Username</label>
                         <input type="text" id="username" name="username" class="form-control form-control-alternative" placeholder="{{ $user->username }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label">Email address</label>
+                        <label class="form-control-label" style = "margin-bottom: 8px;">Email address</label>
                         <input type="email" id="email" name="email" class="form-control form-control-alternative" placeholder="{{ $user->email }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label">Profile Picture</label>
+                      <div class="form-group focused" style = "margin-top: 13px;">
+                        <label class="form-control-label" >Profile Picture</label>
                         <input type="file" class="file" name="file" id="file" accept=".png, .jpg, .jpeg">
                       </div>
                   </div>
@@ -115,6 +116,7 @@
                 <!-- <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
+
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-address">Address</label>
@@ -147,91 +149,24 @@
                 <!-- Description -->
 
 
-                <h6 class="heading-small text-muted mb-4">About me</h6>
+                <h6 class="heading-small text-muted mb-4"></h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
-                    <label>About Me</label>
-                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" placeholder="{{ $user->profile_description }}"></textarea>
+                    <label style = "position: relative; margin-bottom: 8px; font-size: 17px;">About Me</label>
+                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" style = "position: relative; margin-bottom: 12px;"  placeholder="{{ $user->profile_description }}"></textarea>
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-sm btn-primary" type="submit">Update Profile</button>
+                  <button class="btn btn-sm btn-primary" ;type="submit" >Update Profile</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        @endif
       </div>
-      
     </div>
-    <div class="container mt-8" style="margin-left:20%; width:60%;">
-
-    @if (count($posts) > 0)
-
-    @foreach ($posts as $post)
+  </div>
   
-    <div class="card card-body bg-light mb-5">
-      <div class="flex h-20 border-b">
-        <a class="flex" href="/profile/{{$post->user->id}}">
-          <img class="rounded-full object-cover h-16 w-16"
-          src="{{ url('images/profile_pictures/'.$post->user->id.'.'.$post->user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" alt="">
-          <h2 class="mt-4 ml-2">{{$post->user->username}}</h2>
-        </a>
-        @if ($auth == true)
-        <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
-          @csrf
-          @method('DELETE')
-          <button type="submit">
-            <h2 class="underline text-blue-600 mt-4" style="margin-left: 50rem">Delete</h2>
-          </button>
-          
-        </form>
-        @endif
-      
-      </div>
-
-
-      <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
-
-      @if (in_array($post->file_ext, [".jpg",".jpeg",".png"]))
-      <img src="/content/{{$post->id . $post->file_ext}}" alt="{{$post->title}}">
-      @elseif (in_array($post->file_ext, [".mp3",".wav", ".ogg"]))
-      <audio controls>
-          <source src="/content/{{$post->id . $post->file_ext}}" type="audio/mpeg">
-      </audio>
-      @elseif (in_array($post->file_ext, [".mp4"]))
-      <video controls>
-          <source src="/content/{{$post->id . $post->file_ext}}" type="video/mp4">
-      </video>
-      @elseif (in_array($post->file_ext, [".pdf"]))
-      <a class="underline" href="/content/{{$post->id . $post->file_ext}}">Open PDF in new tab</a>
-      <iframe class="" style="height:40rem;width:100%;" src="/content/{{$post->id . $post->file_ext}}">
-      </iframe>
-      @else
-
-      @endif
-      <small>Posted: {{$post->created_at}}</small>
-
-      <a href="/posts/{{$post->id}}" class="h-5 mt-2.5 border-t">
-          <h3 class="text-center mt-2">Comments</h3>
-      </a>
-  </div>
-
-
-
-  @endforeach
-  <div class="" style="">
-      {{ $posts->withQueryString()->links() }}
-  </div>
-  @else
-  </div>
-  <p>No posts found</p>
-  @endif
-  
-
-
-
 </body>
 
 
