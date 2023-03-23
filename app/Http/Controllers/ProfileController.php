@@ -91,11 +91,13 @@ class ProfileController extends Controller
                 $ext= $file->getClientOriginalExtension();
                 $mainFilename = $user->id;
                 
-                $user->pfp_file_extension = $ext;
+                $path = $destination.$mainFilename.".".$user->pfp_file_extension;
+
                 // check if user has existing pfp
-                if (File::exists($destination, $mainFilename.".".$user->pfp_file_extension)) {
-                    File::delete($destination, $mainFilename.".".$user->pfp_file_extension);
+                if (File::exists($path)) {
+                    unlink($path);
                 }
+                $user->pfp_file_extension = $ext;
                 $file->move($destination, $mainFilename.".".$ext);
             }
         }

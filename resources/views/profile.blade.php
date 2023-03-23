@@ -13,19 +13,20 @@
 </head>
 
 @include('inc.navbar')
-@include('inc.messages')
+
 
 
 <body>
-    
+  
+    @include('inc.messages')
     <!-- Page content -->
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--7" style = "margin-top: 45px; ">
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
-            <div class="row justify-content-center">
+          <div class="card card-profile shadow" style = "margin-top: 100px; margin-right: 15px; ">
+            <div class="row justify-content-center" >
               <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
+                <div class="card-profile-image" style = "margin-top: 30px; ">
                   <a href="#">
                     <img src="{{ url('images/profile_pictures/'.$user->id.'.'.$user->pfp_file_extension) }}" onerror="this.onerror=null; this.src='/images/profile_pictures/default.jpg'" class="rounded-circle">
                   </a>
@@ -55,13 +56,15 @@
           </div>
         </div>
         @if($user == Auth::user())
-        <div class="col-xl-8 order-xl-1">
-          <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h3 class="mb-0">My Account</h3>
+        <div class="col-xl-8 order-xl-1"  >
+          <div class ="card bg-secondary shadow" style = "color: black;" >
+            <div class="card-header bg-white border-0"  >
+              <div class="row align-items-center" >
+                <div class="col-8"  >
+                  <h3 class="mb-0" >My Account</h3>
                 </div>
+
+
 
               </div>
             </div>
@@ -69,27 +72,27 @@
 
 			<!-- card -->
 
-            <div class="card-body"> 
+            <div class="card-body"  style = "background-color: #e0e0e0;"> 
               <form method="POST" enctype="multipart/form-data">
                 @csrf
-                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <h6 class="heading-small text-muted mb-4"></h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label">Username</label>
+                        <label class="form-control-label" style = "margin-bottom: 8px;">Username</label>
                         <input type="text" id="username" name="username" class="form-control form-control-alternative" placeholder="{{ $user->username }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label">Email address</label>
+                        <label class="form-control-label" style = "margin-bottom: 8px;">Email address</label>
                         <input type="email" id="email" name="email" class="form-control form-control-alternative" placeholder="{{ $user->email }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label">Profile Picture</label>
+                      <div class="form-group focused" style = "margin-top: 13px;">
+                        <label class="form-control-label" >Profile Picture</label>
                         <input type="file" class="file" name="file" id="file" accept=".png, .jpg, .jpeg">
                       </div>
                   </div>
@@ -115,6 +118,7 @@
                 <!-- <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
+
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-address">Address</label>
@@ -147,15 +151,15 @@
                 <!-- Description -->
 
 
-                <h6 class="heading-small text-muted mb-4">About me</h6>
+                <h6 class="heading-small text-muted mb-4"></h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
-                    <label>About Me</label>
-                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" placeholder="{{ $user->profile_description }}"></textarea>
+                    <label style = "position: relative; margin-bottom: 8px; font-size: 17px;">About Me</label>
+                    <textarea id="profile_description" name="profile_description" rows="4" class="form-control form-control-alternative" style = "position: relative; margin-bottom: 12px;"  placeholder="{{ $user->profile_description }}"></textarea>
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-sm btn-primary" type="submit">Update Profile</button>
+                  <button class="btn btn-sm btn-primary" type="submit" >Update Profile</button>
                 </div>
               </form>
             </div>
@@ -232,6 +236,15 @@
 
 
 
+</body>
+
+
+        
+
+      </div>
+    </div>
+  </div>
+  
 </body>
 
 

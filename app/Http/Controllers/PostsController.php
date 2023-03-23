@@ -293,15 +293,15 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function flag(Request $request ,$id)
+    public function flag(Request $request)
     {
         $request->validate([
             'reason' => array('nullable', 'min:4', 'string', 'max:255'),
         ]);
 
         $data = $request->all();
-
-        $post = Post::find($id);
+     
+        $post = Post::find($data['postID']);
 
         if (Auth::user()==null){
             return redirect()->back()->with("error", "must log in to flag a post"); 

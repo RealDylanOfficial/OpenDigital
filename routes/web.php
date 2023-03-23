@@ -58,7 +58,7 @@ Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('pr
 Route::post('/profile','App\Http\Controllers\ProfileController@profileUpdate')->name('profileupdate');
 
 
-Route::post('/posts/{id}',[PostsController::class,'flag'])->name('flagPost');
+Route::post('/posts/id',[PostsController::class,'flag'])->name('flagPost');
 
 Route::post('/posts/{id}/like',[PostsController::class,'like'])->name('likePost');
 
