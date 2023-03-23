@@ -66,7 +66,7 @@ class CommentsController extends Controller
 
         $comment->save();
 
-        return redirect('/posts');
+        return redirect()->back();
     }
 
     /**
