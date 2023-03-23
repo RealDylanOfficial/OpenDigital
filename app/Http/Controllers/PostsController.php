@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Flag;
+use App\Models\Like;
 use Validator;
 use Carbon\Carbon;
 use App\Models\Tag;
@@ -334,9 +335,18 @@ class PostsController extends Controller
         else if ($post->user_id == Auth::user()->id){
             return redirect()->back()->with("error", "cannot like your own posts");
         }
-        $post->likes++;
-        $post->save();    
+        $like = Like::where("user_id", "=", Auth::user()->id)->where("post_id", "=", $id)->first();
+        if ($like === null){
+            $like = new Like;
+            $like->user_id = Auth::user()->id;
+            $like->post_id = $id;
+            $like->save();
+        }
+        else{
+            Like::destroy($like->id);
+        }
         return redirect()->back();
+        
         
     }
 
