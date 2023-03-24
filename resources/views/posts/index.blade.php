@@ -249,7 +249,7 @@
 
         </a>
         
-        <h2>Download count: {{$post->download_count}}, Likes: {{$post->likes}}</h2>
+        <h2 style = "margin-bottom: 10px; position: relative; bottom: 15px">Download count: {{$post->download_count}}, Likes: {{$post->likes}}</h2>
 
         <h1 class="text-2xl mt-2"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h1>
 
