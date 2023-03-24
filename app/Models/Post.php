@@ -40,6 +40,7 @@ class Post extends Model
             $post->tags()->detach();
             $post->comment()->delete();
             $post->flags()->delete();
+            $post->likes()->delete();
         });
     }
 }
