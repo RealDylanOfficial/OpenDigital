@@ -199,7 +199,6 @@ class PostsController extends Controller
         $post->title = $request->input("title");
         $post->description = $request->input("description");
         $post->download_count = 0;
-        $post->likes = 0;
         $post->user_id = Auth::user()->id;
 
         $file_type = $request->file("file")->getMimeType();
@@ -252,8 +251,7 @@ class PostsController extends Controller
             $post->tags()->attach($tagID);
             
         }
-        $tag = new Tag;
-        $tag->tag = 
+
         
         $postID = $post->id;
         $filename = "$postID"."$file_ext";
