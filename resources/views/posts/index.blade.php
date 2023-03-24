@@ -236,12 +236,12 @@
                     @endif
                 </div>
                 <div class="d-grid mx-auto">
-                    <button type="submit" class="btn btn-dark btn-block auth-button">Flag Post</button>
+                    <button id="flag-btn" type="submit" class="btn btn-dark btn-block auth-button">Flag Post</button>
                 </div>
             </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="close-btn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             </div>
         </div>

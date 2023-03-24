@@ -150,3 +150,25 @@
     margin: 15px;
 
   }
+
+  #close-btn, #flag-btn{
+    border: none;
+    background-color: #b0b3b4;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    max-width: 5.5rem;
+    transition: all ease 0.3s;
+    display: flex;
+
+
+    &:hover {
+        background-color: rgba(#f10707f5, 0.8);
+    }
+
+    &:disabled {
+        background-color: #cfcfd4;
+        cursor: pointer;
+    }  
+  }
+
